@@ -7,257 +7,889 @@
   <title>IRONFORGE GYM – Sweat Today, Shine Tomorrow</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700;900&family=Barlow+Condensed:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700;900&family=Barlow+Condensed:wght@400;600;700;800&display=swap"
+    rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     /* ── RESETS ── */
-    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-    html { scroll-behavior:smooth; font-size:16px; }
-    body { background:#0A0A0A; color:#F5F5F5; font-family:'Barlow',sans-serif; overflow-x:hidden; }
-    a { text-decoration:none; color:inherit; }
-    ul { list-style:none; }
-    img { display:block; width:100%; }
-    ::-webkit-scrollbar { width:5px; }
-    ::-webkit-scrollbar-track { background:#111; }
-    ::-webkit-scrollbar-thumb { background:#E8000E; border-radius:3px; }
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      background: #0A0A0A;
+      color: #F5F5F5;
+      font-family: 'Barlow', sans-serif;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+    }
+
+    ::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #111;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #E8000E;
+      border-radius: 3px;
+    }
 
     /* ── KEYFRAMES ── */
-    @keyframes loaderFill { to { width:100%; } }
-    @keyframes loaderBlink { 0%,100%{opacity:1} 50%{opacity:.3} }
-    @keyframes heroFadeUp { from{opacity:0;transform:translateY(50px)} to{opacity:1;transform:translateY(0)} }
-    @keyframes heroPulse { 0%,100%{transform:scaleX(1)} 50%{transform:scaleX(1.04)} }
-    @keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
-    @keyframes testiScroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
-    @keyframes waPulse { 0%,100%{box-shadow:0 4px 20px rgba(37,211,102,.35)} 50%{box-shadow:0 4px 40px rgba(37,211,102,.65)} }
-    @keyframes scrollBounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(6px)} }
-    @keyframes slideDown { from{opacity:0;transform:translateY(-10px)} to{opacity:1;transform:translateY(0)} }
-    @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+    @keyframes loaderFill {
+      to {
+        width: 100%;
+      }
+    }
+
+    @keyframes loaderBlink {
+
+      0%,
+      100% {
+        opacity: 1
+      }
+
+      50% {
+        opacity: .3
+      }
+    }
+
+    @keyframes heroFadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
+
+    @keyframes heroPulse {
+
+      0%,
+      100% {
+        transform: scaleX(1)
+      }
+
+      50% {
+        transform: scaleX(1.04)
+      }
+    }
+
+    @keyframes ticker {
+      from {
+        transform: translateX(0)
+      }
+
+      to {
+        transform: translateX(-50%)
+      }
+    }
+
+    @keyframes testiScroll {
+      from {
+        transform: translateX(0)
+      }
+
+      to {
+        transform: translateX(-50%)
+      }
+    }
+
+    @keyframes waPulse {
+
+      0%,
+      100% {
+        box-shadow: 0 4px 20px rgba(37, 211, 102, .35)
+      }
+
+      50% {
+        box-shadow: 0 4px 40px rgba(37, 211, 102, .65)
+      }
+    }
+
+    @keyframes scrollBounce {
+
+      0%,
+      100% {
+        transform: translateY(0)
+      }
+
+      50% {
+        transform: translateY(6px)
+      }
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-10px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0
+      }
+
+      to {
+        opacity: 1
+      }
+    }
+
     /* NEW: shimmer highlight sweep */
-    @keyframes shimmer { 0%{background-position:-200% center} 100%{background-position:200% center} }
+    @keyframes shimmer {
+      0% {
+        background-position: -200% center
+      }
+
+      100% {
+        background-position: 200% center
+      }
+    }
+
     /* NEW: glitch flicker for section headings on entry */
     @keyframes glitchIn {
-      0%  { clip-path:inset(40% 0 50% 0); transform:translate(-4px,0); opacity:.7; }
-      20% { clip-path:inset(10% 0 70% 0); transform:translate(4px,0);  opacity:.9; }
-      40% { clip-path:inset(70% 0 10% 0); transform:translate(-2px,0); opacity:.8; }
-      60% { clip-path:inset(30% 0 40% 0); transform:translate(2px,0);  opacity:1; }
-      80% { clip-path:inset(0% 0 0% 0);   transform:translate(0,0);    opacity:1; }
-      100%{ clip-path:none;               transform:translate(0,0);    opacity:1; }
+      0% {
+        clip-path: inset(40% 0 50% 0);
+        transform: translate(-4px, 0);
+        opacity: .7;
+      }
+
+      20% {
+        clip-path: inset(10% 0 70% 0);
+        transform: translate(4px, 0);
+        opacity: .9;
+      }
+
+      40% {
+        clip-path: inset(70% 0 10% 0);
+        transform: translate(-2px, 0);
+        opacity: .8;
+      }
+
+      60% {
+        clip-path: inset(30% 0 40% 0);
+        transform: translate(2px, 0);
+        opacity: 1;
+      }
+
+      80% {
+        clip-path: inset(0% 0 0% 0);
+        transform: translate(0, 0);
+        opacity: 1;
+      }
+
+      100% {
+        clip-path: none;
+        transform: translate(0, 0);
+        opacity: 1;
+      }
     }
 
     /* ── LOADER ── */
-    #loader { transition:opacity .6s ease, visibility .6s ease; }
-    #loader.hidden { opacity:0; visibility:hidden; pointer-events:none; }
-    .loader-bar { animation:loaderFill 2s ease forwards; }
-    .loader-txt { animation:loaderBlink 1s infinite; }
+    #loader {
+      transition: opacity .6s ease, visibility .6s ease;
+    }
+
+    #loader.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .loader-bar {
+      animation: loaderFill 2s ease forwards;
+    }
+
+    .loader-txt {
+      animation: loaderBlink 1s infinite;
+    }
 
     /* ── REVEAL ── */
-    .reveal { opacity:0; transform:translateY(36px); transition:opacity .7s ease, transform .7s ease; }
-    .reveal.visible { opacity:1; transform:translateY(0); }
-    .rd1 { transition-delay:.1s; }
-    .rd2 { transition-delay:.2s; }
-    .rd3 { transition-delay:.3s; }
-    .rd4 { transition-delay:.4s; }
+    .reveal {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .rd1 {
+      transition-delay: .1s;
+    }
+
+    .rd2 {
+      transition-delay: .2s;
+    }
+
+    .rd3 {
+      transition-delay: .3s;
+    }
+
+    .rd4 {
+      transition-delay: .4s;
+    }
 
     /* ── HERO ANIMATIONS ── */
-    .h-tag  { animation:heroFadeUp .8s ease .2s both; }
-    .h-title{ animation:heroFadeUp .9s ease .4s both; }
-    .h-sub  { animation:heroFadeUp .9s ease .6s both; }
-    .h-btns { animation:heroFadeUp .9s ease .8s both; }
-    .h-stats{ animation:heroFadeUp .9s ease 1s  both; }
+    .h-tag {
+      animation: heroFadeUp .8s ease .2s both;
+    }
+
+    .h-title {
+      animation: heroFadeUp .9s ease .4s both;
+    }
+
+    .h-sub {
+      animation: heroFadeUp .9s ease .6s both;
+    }
+
+    .h-btns {
+      animation: heroFadeUp .9s ease .8s both;
+    }
+
+    .h-stats {
+      animation: heroFadeUp .9s ease 1s both;
+    }
 
     /* ── TICKER ── */
-    .ticker-inner { animation:ticker 80s linear infinite; }
+    .ticker-inner {
+      animation: ticker 80s linear infinite;
+    }
 
     /* ── TESTI ── */
-    .testi-track { animation:testiScroll 60s linear infinite; }
-    .testi-track:hover { animation-play-state:paused; }
+    .testi-track {
+      animation: testiScroll 60s linear infinite;
+    }
+
+    .testi-track:hover {
+      animation-play-state: paused;
+    }
 
     /* ── WA FLOAT ── */
-    .wa-float { animation:waPulse 2.5s ease infinite; }
-    .scroll-arrow { animation:scrollBounce 1.8s ease infinite; }
+    .wa-float {
+      animation: waPulse 2.5s ease infinite;
+    }
+
+    .scroll-arrow {
+      animation: scrollBounce 1.8s ease infinite;
+    }
 
     /* ── NAV HOVER (single definition) ── */
-    .nav-a { position:relative; }
-    .nav-a::after {
-      content:''; position:absolute; bottom:-3px; left:0;
-      width:0; height:2px; background:#E8000E; transition:width .3s ease;
+    .nav-a {
+      position: relative;
     }
-    .nav-a:hover::after, .nav-a.active::after { width:100%; }
-    .nav-a:hover { color:#fff !important; }
+
+    .nav-a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #E8000E;
+      transition: width .3s ease;
+    }
+
+    .nav-a:hover::after,
+    .nav-a.active::after {
+      width: 100%;
+    }
+
+    .nav-a:hover {
+      color: #fff !important;
+    }
 
     /* ── BUTTON EFFECTS ── */
-    .btn-red { position:relative; overflow:hidden; transition:color .3s, transform .3s ease; }
-    .btn-red::before { content:''; position:absolute; inset:0; background:#fff; transform:translateX(-101%); transition:transform .35s ease; z-index:0; }
-    .btn-red:hover::before { transform:translateX(0); }
-    .btn-red:hover { color:#E8000E !important; }
-    .btn-red span { position:relative; z-index:1; }
+    .btn-red {
+      position: relative;
+      overflow: hidden;
+      transition: color .3s, transform .3s ease;
+    }
 
-    .btn-ghost { position:relative; overflow:hidden; transition:color .3s, border-color .3s, transform .3s ease; }
-    .btn-ghost::before { content:''; position:absolute; inset:0; background:#E8000E; transform:translateX(-101%); transition:transform .35s ease; z-index:0; }
-    .btn-ghost:hover::before { transform:translateX(0); }
-    .btn-ghost:hover { color:#fff !important; border-color:#E8000E !important; }
-    .btn-ghost span { position:relative; z-index:1; }
+    .btn-red::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: #fff;
+      transform: translateX(-101%);
+      transition: transform .35s ease;
+      z-index: 0;
+    }
 
-    .plan-fill { position:relative; overflow:hidden; transition:color .3s; }
-    .plan-fill::before { content:''; position:absolute; inset:0; background:#E8000E; transform:translateX(-101%); transition:transform .35s ease; z-index:0; }
-    .plan-fill:hover::before { transform:translateX(0); }
-    .plan-fill:hover { color:#fff !important; }
-    .plan-fill span { position:relative; z-index:1; }
+    .btn-red:hover::before {
+      transform: translateX(0);
+    }
 
-    .plan-fill-w { position:relative; overflow:hidden; transition:color .3s; }
-    .plan-fill-w::before { content:''; position:absolute; inset:0; background:#fff; transform:translateX(-101%); transition:transform .35s ease; z-index:0; }
-    .plan-fill-w:hover::before { transform:translateX(0); }
-    .plan-fill-w:hover { color:#E8000E !important; }
-    .plan-fill-w span { position:relative; z-index:1; }
+    .btn-red:hover {
+      color: #E8000E !important;
+    }
+
+    .btn-red span {
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn-ghost {
+      position: relative;
+      overflow: hidden;
+      transition: color .3s, border-color .3s, transform .3s ease;
+    }
+
+    .btn-ghost::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: #E8000E;
+      transform: translateX(-101%);
+      transition: transform .35s ease;
+      z-index: 0;
+    }
+
+    .btn-ghost:hover::before {
+      transform: translateX(0);
+    }
+
+    .btn-ghost:hover {
+      color: #fff !important;
+      border-color: #E8000E !important;
+    }
+
+    .btn-ghost span {
+      position: relative;
+      z-index: 1;
+    }
+
+    .plan-fill {
+      position: relative;
+      overflow: hidden;
+      transition: color .3s;
+    }
+
+    .plan-fill::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: #E8000E;
+      transform: translateX(-101%);
+      transition: transform .35s ease;
+      z-index: 0;
+    }
+
+    .plan-fill:hover::before {
+      transform: translateX(0);
+    }
+
+    .plan-fill:hover {
+      color: #fff !important;
+    }
+
+    .plan-fill span {
+      position: relative;
+      z-index: 1;
+    }
+
+    .plan-fill-w {
+      position: relative;
+      overflow: hidden;
+      transition: color .3s;
+    }
+
+    .plan-fill-w::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: #fff;
+      transform: translateX(-101%);
+      transition: transform .35s ease;
+      z-index: 0;
+    }
+
+    .plan-fill-w:hover::before {
+      transform: translateX(0);
+    }
+
+    .plan-fill-w:hover {
+      color: #E8000E !important;
+    }
+
+    .plan-fill-w span {
+      position: relative;
+      z-index: 1;
+    }
 
     /* ── CARD HOVERS ── */
-    .service-card:hover .svc-img { transform:scale(1.07) !important; filter:brightness(.2) !important; }
-    .service-card:hover .svc-overlay { background:linear-gradient(to top, rgba(168,0,9,.65) 0%, rgba(10,10,10,.3) 100%) !important; }
-    .service-card:hover .svc-icon { background:#E8000E !important; color:#fff !important; }
-    .service-card:hover .svc-desc { max-height:110px !important; opacity:1 !important; }
-    .svc-img { transition:transform .6s ease, filter .6s ease; }
-    .svc-overlay { transition:background .4s ease; }
-    .svc-icon { transition:background .3s, color .3s; }
-    .svc-desc { transition:max-height .45s ease, opacity .4s ease; }
+    .service-card:hover .svc-img {
+      transform: scale(1.07) !important;
+      filter: brightness(.2) !important;
+    }
 
-    .trainer-card:hover .tr-img { transform:scale(1.05) !important; filter:brightness(.65) !important; }
-    .trainer-card:hover .tr-socials { opacity:1 !important; transform:translateY(0) !important; }
-    .tr-img { transition:transform .5s ease, filter .5s ease; }
-    .tr-socials { transition:opacity .4s ease, transform .4s ease; }
+    .service-card:hover .svc-overlay {
+      background: linear-gradient(to top, rgba(168, 0, 9, .65) 0%, rgba(10, 10, 10, .3) 100%) !important;
+    }
+
+    .service-card:hover .svc-icon {
+      background: #E8000E !important;
+      color: #fff !important;
+    }
+
+    .service-card:hover .svc-desc {
+      max-height: 110px !important;
+      opacity: 1 !important;
+    }
+
+    .svc-img {
+      transition: transform .6s ease, filter .6s ease;
+    }
+
+    .svc-overlay {
+      transition: background .4s ease;
+    }
+
+    .svc-icon {
+      transition: background .3s, color .3s;
+    }
+
+    .svc-desc {
+      transition: max-height .45s ease, opacity .4s ease;
+    }
+
+    .trainer-card:hover .tr-img {
+      transform: scale(1.05) !important;
+      filter: brightness(.65) !important;
+    }
+
+    .trainer-card:hover .tr-socials {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+    }
+
+    .tr-img {
+      transition: transform .5s ease, filter .5s ease;
+    }
+
+    .tr-socials {
+      transition: opacity .4s ease, transform .4s ease;
+    }
 
     /* NEW: trainer card spotlight effect */
-    .trainer-card { position:relative; overflow:hidden; }
-    .trainer-card::after {
-      content:''; position:absolute; inset:0; pointer-events:none; z-index:2;
-      background:radial-gradient(circle 150px at var(--mx,50%) var(--my,50%), rgba(232,0,14,.18) 0%, transparent 70%);
-      opacity:0; transition:opacity .35s ease;
+    .trainer-card {
+      position: relative;
+      overflow: hidden;
     }
-    .trainer-card:hover::after { opacity:1; }
 
-    .gallery-item:hover .gal-img { transform:scale(1.08) !important; filter:brightness(.4) !important; }
-    .gallery-item:hover .gal-overlay { opacity:1 !important; }
-    .gal-img { transition:transform .6s ease, filter .6s ease; }
-    .gal-overlay { transition:opacity .35s ease; }
+    .trainer-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 2;
+      background: radial-gradient(circle 150px at var(--mx, 50%) var(--my, 50%), rgba(232, 0, 14, .18) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity .35s ease;
+    }
 
-    .plan-card { transition:transform .35s ease, box-shadow .35s ease; }
-    .plan-card:hover { transform:translateY(-8px) !important; box-shadow:0 20px 50px rgba(232,0,14,.18) !important; }
-    .plan-featured { transform:translateY(-14px); }
-    .plan-featured:hover { transform:translateY(-22px) !important; }
+    .trainer-card:hover::after {
+      opacity: 1;
+    }
 
-    .testi-card { transition:border-color .35s ease; }
-    .testi-card:hover { border-color:rgba(232,0,14,.45) !important; }
+    .gallery-item:hover .gal-img {
+      transform: scale(1.08) !important;
+      filter: brightness(.4) !important;
+    }
 
-    .contact-soc { transition:background .3s, border-color .3s, color .3s; }
-    .contact-soc:hover { background:#E8000E !important; border-color:#E8000E !important; color:#fff !important; }
+    .gallery-item:hover .gal-overlay {
+      opacity: 1 !important;
+    }
 
-    .footer-soc { transition:background .3s, border-color .3s, color .3s; }
-    .footer-soc:hover { background:#E8000E !important; border-color:#E8000E !important; color:#fff !important; }
+    .gal-img {
+      transition: transform .6s ease, filter .6s ease;
+    }
 
-    .footer-lnk { transition:color .3s, padding-left .3s; }
-    .footer-lnk:hover { color:#E8000E !important; padding-left:7px !important; }
+    .gal-overlay {
+      transition: opacity .35s ease;
+    }
 
-    .tr-soc { transition:background .3s, border-color .3s; }
-    .tr-soc:hover { background:#E8000E !important; border-color:#E8000E !important; }
+    .plan-card {
+      transition: transform .35s ease, box-shadow .35s ease;
+    }
+
+    .plan-card:hover {
+      transform: translateY(-8px) !important;
+      box-shadow: 0 20px 50px rgba(232, 0, 14, .18) !important;
+    }
+
+    .plan-featured {
+      transform: translateY(-14px);
+    }
+
+    .plan-featured:hover {
+      transform: translateY(-22px) !important;
+    }
+
+    .testi-card {
+      transition: border-color .35s ease;
+    }
+
+    .testi-card:hover {
+      border-color: rgba(232, 0, 14, .45) !important;
+    }
+
+    .contact-soc {
+      transition: background .3s, border-color .3s, color .3s;
+    }
+
+    .contact-soc:hover {
+      background: #E8000E !important;
+      border-color: #E8000E !important;
+      color: #fff !important;
+    }
+
+    .footer-soc {
+      transition: background .3s, border-color .3s, color .3s;
+    }
+
+    .footer-soc:hover {
+      background: #E8000E !important;
+      border-color: #E8000E !important;
+      color: #fff !important;
+    }
+
+    .footer-lnk {
+      transition: color .3s, padding-left .3s;
+    }
+
+    .footer-lnk:hover {
+      color: #E8000E !important;
+      padding-left: 7px !important;
+    }
+
+    .tr-soc {
+      transition: background .3s, border-color .3s;
+    }
+
+    .tr-soc:hover {
+      background: #E8000E !important;
+      border-color: #E8000E !important;
+    }
 
     /* ── BACK TO TOP ── */
-    .back-top { transition:opacity .35s, transform .35s, background .3s; }
-    .back-top.vis { opacity:1 !important; transform:translateY(0) !important; }
-    .back-top:hover { background:#A80009 !important; }
+    .back-top {
+      transition: opacity .35s, transform .35s, background .3s;
+    }
+
+    .back-top.vis {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+    }
+
+    .back-top:hover {
+      background: #A80009 !important;
+    }
 
     /* ── NAV SCROLLED ── */
     nav.scrolled {
-      background:rgba(10,10,10,.96) !important;
-      box-shadow:0 2px 24px rgba(232,0,14,.15) !important;
-      backdrop-filter:blur(14px) !important;
+      background: rgba(10, 10, 10, .96) !important;
+      box-shadow: 0 2px 24px rgba(232, 0, 14, .15) !important;
+      backdrop-filter: blur(14px) !important;
     }
 
     /* ── MOBILE NAV ── */
-    .mob-nav { transition:transform .48s cubic-bezier(.77,0,.18,1); }
-    .mob-nav.open { transform:translateX(0) !important; }
-    .mob-lnk { transition:color .3s, letter-spacing .3s; display:block; }
-    .mob-lnk:hover { color:#E8000E !important; letter-spacing:.08em !important; }
+    .mob-nav {
+      transition: transform .48s cubic-bezier(.77, 0, .18, 1);
+    }
+
+    .mob-nav.open {
+      transform: translateX(0) !important;
+    }
+
+    .mob-lnk {
+      transition: color .3s, letter-spacing .3s;
+      display: block;
+    }
+
+    .mob-lnk:hover {
+      color: #E8000E !important;
+      letter-spacing: .08em !important;
+    }
 
     /* ── HAMBURGER ── */
-    .hbg span { transition:all .35s ease; display:block; }
-    .hbg.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
-    .hbg.open span:nth-child(2) { opacity:0; transform:scaleX(0); }
-    .hbg.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+    .hbg span {
+      transition: all .35s ease;
+      display: block;
+    }
+
+    .hbg.open span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .hbg.open span:nth-child(2) {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+
+    .hbg.open span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
 
     /* ── OVERLAY ── */
-    .mob-overlay { opacity:0; visibility:hidden; transition:opacity .35s ease, visibility .35s ease; }
-    .mob-overlay.show { opacity:1 !important; visibility:visible !important; }
+    .mob-overlay {
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .35s ease, visibility .35s ease;
+    }
+
+    .mob-overlay.show {
+      opacity: 1 !important;
+      visibility: visible !important;
+    }
 
     /* ── TOGGLE ── */
-    .tog-knob { transition:transform .35s ease; }
-    .tog-sw { transition:background .35s ease; }
-    .tog-sw.on { background:#E8000E !important; }
-    .tog-sw.on .tog-knob { transform:translateX(26px) !important; }
-    .bl-lbl { transition:color .3s; }
-    .bl-lbl.active { color:#F5F5F5 !important; }
+    .tog-knob {
+      transition: transform .35s ease;
+    }
+
+    .tog-sw {
+      transition: background .35s ease;
+    }
+
+    .tog-sw.on {
+      background: #E8000E !important;
+    }
+
+    .tog-sw.on .tog-knob {
+      transform: translateX(26px) !important;
+    }
+
+    .bl-lbl {
+      transition: color .3s;
+    }
+
+    .bl-lbl.active {
+      color: #F5F5F5 !important;
+    }
 
     /* ── LIGHTBOX ── */
-    #lightbox { transition:opacity .4s ease, visibility .4s ease; }
-    #lightbox.open { opacity:1 !important; visibility:visible !important; }
+    #lightbox {
+      transition: opacity .4s ease, visibility .4s ease;
+    }
+
+    #lightbox.open {
+      opacity: 1 !important;
+      visibility: visible !important;
+    }
 
     /* ── FORM ── */
-    .f-input { transition:border-color .3s; outline:none; }
-    .f-input:focus { border-bottom-color:#E8000E !important; }
-    .f-submit { transition:background .3s, letter-spacing .3s; }
-    .f-submit:hover { background:#A80009 !important; letter-spacing:.3em !important; }
-    .f-submit.ok { background:#1a7a2e !important; }
+    .f-input {
+      transition: border-color .3s;
+      outline: none;
+    }
+
+    .f-input:focus {
+      border-bottom-color: #E8000E !important;
+    }
+
+    .f-submit {
+      transition: background .3s, letter-spacing .3s;
+    }
+
+    .f-submit:hover {
+      background: #A80009 !important;
+      letter-spacing: .3em !important;
+    }
+
+    .f-submit.ok {
+      background: #1a7a2e !important;
+    }
 
     /* ── SCROLL PROGRESS ── */
-    #sprogress { transition:width .1s linear; }
+    #sprogress {
+      transition: width .1s linear;
+    }
 
     /* NEW: shimmer text effect on headings reveal */
-    .shimmer-on-reveal.visible h2, .shimmer-on-reveal.visible h1 {
-      background:linear-gradient(90deg, #F5F5F5 40%, #E8000E 50%, #F5F5F5 60%);
-      background-size:200% auto;
-      -webkit-background-clip:text;
-      background-clip:text;
-      animation:shimmer .6s ease forwards;
+    .shimmer-on-reveal.visible h2,
+    .shimmer-on-reveal.visible h1 {
+      background: linear-gradient(90deg, #F5F5F5 40%, #E8000E 50%, #F5F5F5 60%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      animation: shimmer .6s ease forwards;
     }
 
     /* NEW: glitch entrance on section headings */
     .glitch-reveal.visible {
-      animation:glitchIn .35s ease forwards;
+      animation: glitchIn .35s ease forwards;
     }
 
     /* ── RESPONSIVE ── */
-    @media(max-width:1024px){
-      .about-grid { grid-template-columns:1fr !important; }
-      .about-imgs { height:420px !important; }
-      .stats-bar { grid-template-columns:repeat(2,1fr) !important; }
-      .contact-grid { grid-template-columns:1fr !important; }
-      .plans-grid { grid-template-columns:1fr !important; max-width:440px !important; margin:0 auto !important; }
-      .plan-featured { transform:none !important; }
-      .plan-featured:hover { transform:translateY(-8px) !important; }
-      .footer-grid { grid-template-columns:1fr 1fr !important; gap:2.5rem !important; }
-      .svc-grid { grid-template-columns:1fr 1fr !important; }
-      .svc-main { grid-column:span 2 !important; min-height:380px !important; aspect-ratio:auto !important; }
-      .gal-grid { grid-template-columns:repeat(2,1fr) !important; grid-template-rows:auto !important; }
-      .gal-large { grid-column:span 2 !important; height:280px !important; }
-      .gal-wide { grid-column:span 1 !important; }
-      .svc-header { grid-template-columns:1fr !important; }
+    @media(max-width:1024px) {
+      .about-grid {
+        grid-template-columns: 1fr !important;
+      }
+
+      .about-imgs {
+        height: 420px !important;
+      }
+
+      .stats-bar {
+        grid-template-columns: repeat(2, 1fr) !important;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr !important;
+      }
+
+      .plans-grid {
+        grid-template-columns: 1fr !important;
+        max-width: 440px !important;
+        margin: 0 auto !important;
+      }
+
+      .plan-featured {
+        transform: none !important;
+      }
+
+      .plan-featured:hover {
+        transform: translateY(-8px) !important;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 2.5rem !important;
+      }
+
+      .svc-grid {
+        grid-template-columns: 1fr 1fr !important;
+      }
+
+      .svc-main {
+        grid-column: span 2 !important;
+        min-height: 380px !important;
+        aspect-ratio: auto !important;
+      }
+
+      .gal-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        grid-template-rows: auto !important;
+      }
+
+      .gal-large {
+        grid-column: span 2 !important;
+        height: 280px !important;
+      }
+
+      .gal-wide {
+        grid-column: span 1 !important;
+      }
+
+      .svc-header {
+        grid-template-columns: 1fr !important;
+      }
     }
-    @media(max-width:768px){
-      .nav-desktop { display:none !important; }
-      .hbg { display:flex !important; }
-      .hero-divider { flex-direction:column !important; gap:0 !important; }
-      .hero-divider span { border-right:none !important; border-bottom:1px solid rgba(255,255,255,.15) !important; padding:1rem 0 !important; width:100% !important; justify-content:center !important; }
-      .footer-grid { grid-template-columns:1fr !important; }
-      .svc-grid { grid-template-columns:1fr !important; }
-      .svc-main { grid-column:span 1 !important; }
-      .h-title { font-size:clamp(3rem,14vw,6rem) !important; }
-      .form-row { grid-template-columns:1fr !important; }
-      .about-feats { grid-template-columns:1fr !important; }
+
+    @media(max-width:768px) {
+      .nav-desktop {
+        display: none !important;
+      }
+
+      .hbg {
+        display: flex !important;
+      }
+
+      .hero-divider {
+        flex-direction: column !important;
+        gap: 0 !important;
+      }
+
+      .hero-divider span {
+        border-right: none !important;
+        border-bottom: 1px solid rgba(255, 255, 255, .15) !important;
+        padding: 1rem 0 !important;
+        width: 100% !important;
+        justify-content: center !important;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr !important;
+      }
+
+      .svc-grid {
+        grid-template-columns: 1fr !important;
+      }
+
+      .svc-main {
+        grid-column: span 1 !important;
+      }
+
+      .h-title {
+        font-size: clamp(3rem, 14vw, 6rem) !important;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr !important;
+      }
+
+      .about-feats {
+        grid-template-columns: 1fr !important;
+      }
     }
-    @media(max-width:480px){
-      .h-title { font-size:clamp(2.6rem,13vw,5rem) !important; }
-      .h-sub { font-size:1rem !important; }
-      .gal-grid { grid-template-columns:1fr !important; }
-      .gal-large { grid-column:span 1 !important; }
-      .gal-wide { grid-column:span 1 !important; }
+
+    @media(max-width:480px) {
+      .h-title {
+        font-size: clamp(2.6rem, 13vw, 5rem) !important;
+      }
+
+      .h-sub {
+        font-size: 1rem !important;
+      }
+
+      .gal-grid {
+        grid-template-columns: 1fr !important;
+      }
+
+      .gal-large {
+        grid-column: span 1 !important;
+      }
+
+      .gal-wide {
+        grid-column: span 1 !important;
+      }
     }
   </style>
 </head>
@@ -265,17 +897,21 @@
 <body>
 
   <!-- ── SCROLL PROGRESS ── -->
-  <div id="sprogress" style="position:fixed;top:0;left:0;height:3px;width:0%;background:#E8000E;z-index:99999;pointer-events:none;"></div>
+  <div id="sprogress"
+    style="position:fixed;top:0;left:0;height:3px;width:0%;background:#E8000E;z-index:99999;pointer-events:none;"></div>
 
   <!-- ── LOADER ── -->
-  <div id="loader" style="position:fixed;inset:0;background:#0A0A0A;z-index:99990;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;">
+  <div id="loader"
+    style="position:fixed;inset:0;background:#0A0A0A;z-index:99990;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;">
     <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,8vw,6rem);letter-spacing:.08em;color:#F5F5F5;">
       IRON<span style="color:#E8000E;">FORGE</span>
     </div>
     <div style="width:260px;height:3px;background:#1A1A1A;border-radius:2px;overflow:hidden;">
       <div class="loader-bar" style="height:100%;width:0%;background:#E8000E;border-radius:2px;"></div>
     </div>
-    <p class="loader-txt" style="font-family:'Barlow Condensed',sans-serif;font-size:.8rem;letter-spacing:.3em;color:#555;text-transform:uppercase;">Loading your experience…</p>
+    <p class="loader-txt"
+      style="font-family:'Barlow Condensed',sans-serif;font-size:.8rem;letter-spacing:.3em;color:#555;text-transform:uppercase;">
+      Loading your experience…</p>
   </div>
 
   <script>
@@ -302,8 +938,10 @@
   </script>
 
   <!-- ── LIGHTBOX ── -->
-  <div id="lightbox" style="position:fixed;inset:0;background:rgba(0,0,0,.95);z-index:9000;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;">
-    <button id="lbClose" style="position:absolute;top:1.5rem;right:1.5rem;background:none;border:none;color:#fff;font-size:2rem;cursor:pointer;line-height:1;">&#x2715;</button>
+  <div id="lightbox"
+    style="position:fixed;inset:0;background:rgba(0,0,0,.95);z-index:9000;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;">
+    <button id="lbClose"
+      style="position:absolute;top:1.5rem;right:1.5rem;background:none;border:none;color:#fff;font-size:2rem;cursor:pointer;line-height:1;">&#x2715;</button>
     <img id="lbImg" src="" alt="" style="max-width:92vw;max-height:92vh;object-fit:contain;" />
   </div>
 
@@ -321,22 +959,37 @@
   <!-- ═══════════════════════════════════════
      NAVIGATION
   ═══════════════════════════════════════ -->
-  <nav id="navbar" style="position:fixed;top:0;left:0;right:0;height:74px;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 5%;transition:background .35s ease,box-shadow .35s ease;background:transparent;">
+  <nav id="navbar"
+    style="position:fixed;top:0;left:0;right:0;height:74px;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 5%;transition:background .35s ease,box-shadow .35s ease;background:transparent;">
 
     <!-- Logo -->
-    <a href="#home" style="font-family:'Bebas Neue',sans-serif;font-size:1.85rem;letter-spacing:.06em;color:#F5F5F5;line-height:1;display:flex;align-items:center;gap:9px;text-decoration:none;">
-      <span style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;background:#E8000E;border-radius:4px;font-size:1rem;font-weight:900;color:#fff;font-family:'Bebas Neue',sans-serif;">I</span>
+    <a href="#home"
+      style="font-family:'Bebas Neue',sans-serif;font-size:1.85rem;letter-spacing:.06em;color:#F5F5F5;line-height:1;display:flex;align-items:center;gap:9px;text-decoration:none;">
+      <span
+        style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;background:#E8000E;border-radius:4px;font-size:1rem;font-weight:900;color:#fff;font-family:'Bebas Neue',sans-serif;">I</span>
       IRON<span style="color:#E8000E;">FORGE</span>
     </a>
 
     <!-- Desktop Links -->
     <ul class="nav-desktop" style="display:flex;align-items:center;gap:2rem;list-style:none;margin:0;padding:0;">
-      <li><a href="#home"       class="nav-a" style="font-family:'Barlow Condensed',sans-serif;font-size:.88rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#CCCCCC;text-decoration:none;padding-bottom:3px;">Home</a></li>
-      <li><a href="#about"      class="nav-a" style="font-family:'Barlow Condensed',sans-serif;font-size:.88rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#CCCCCC;text-decoration:none;padding-bottom:3px;">About</a></li>
-      <li><a href="#services"   class="nav-a" style="font-family:'Barlow Condensed',sans-serif;font-size:.88rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#CCCCCC;text-decoration:none;padding-bottom:3px;">Services</a></li>
-      <li><a href="#trainers"   class="nav-a" style="font-family:'Barlow Condensed',sans-serif;font-size:.88rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#CCCCCC;text-decoration:none;padding-bottom:3px;">Trainers</a></li>
-      <li><a href="#membership" class="nav-a" style="font-family:'Barlow Condensed',sans-serif;font-size:.88rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#CCCCCC;text-decoration:none;padding-bottom:3px;">Membership</a></li>
-      <li><a href="#contact"    class="nav-a" style="font-family:'Barlow Condensed',sans-serif;font-size:.88rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#CCCCCC;text-decoration:none;padding-bottom:3px;">Contact</a></li>
+      <li><a href="#home" class="nav-a"
+          style="font-family:'Barlow Condensed',sans-serif;font-size:.88rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#CCCCCC;text-decoration:none;padding-bottom:3px;">Home</a>
+      </li>
+      <li><a href="#about" class="nav-a"
+          style="font-family:'Barlow Condensed',sans-serif;font-size:.88rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#CCCCCC;text-decoration:none;padding-bottom:3px;">About</a>
+      </li>
+      <li><a href="#services" class="nav-a"
+          style="font-family:'Barlow Condensed',sans-serif;font-size:.88rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#CCCCCC;text-decoration:none;padding-bottom:3px;">Services</a>
+      </li>
+      <li><a href="#trainers" class="nav-a"
+          style="font-family:'Barlow Condensed',sans-serif;font-size:.88rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#CCCCCC;text-decoration:none;padding-bottom:3px;">Trainers</a>
+      </li>
+      <li><a href="#membership" class="nav-a"
+          style="font-family:'Barlow Condensed',sans-serif;font-size:.88rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#CCCCCC;text-decoration:none;padding-bottom:3px;">Membership</a>
+      </li>
+      <li><a href="#contact" class="nav-a"
+          style="font-family:'Barlow Condensed',sans-serif;font-size:.88rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#CCCCCC;text-decoration:none;padding-bottom:3px;">Contact</a>
+      </li>
       <li>
         <a href="#membership" id="joinBtn"
           style="font-family:'Barlow Condensed',sans-serif;font-size:.82rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;background:#E8000E;color:#fff;padding:10px 22px;border:2px solid #E8000E;text-decoration:none;display:inline-block;transition:background .3s,color .3s;"
@@ -359,51 +1012,78 @@
   <!-- Mobile Nav Drawer -->
   <div class="mob-nav" id="mobNav"
     style="position:fixed;top:0;right:0;bottom:0;width:min(300px,88vw);background:#0D0D0D;z-index:1002;transform:translateX(100%);display:flex;flex-direction:column;padding:0;border-left:2px solid #E8000E;overflow-y:auto;">
-    <div style="display:flex;align-items:center;justify-content:space-between;padding:0 1.6rem;height:74px;border-bottom:1px solid #1A1A1A;flex-shrink:0;">
-      <span style="font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:.06em;color:#F5F5F5;">IRON<span style="color:#E8000E;">FORGE</span></span>
-      <button onclick="closeMob()" style="background:none;border:none;color:#888;font-size:1.4rem;cursor:pointer;width:36px;height:36px;display:flex;align-items:center;justify-content:center;transition:color 0.2s;" onmouseover="this.style.color='#E8000E'" onmouseout="this.style.color='#888'">&#x2715;</button>
+    <div
+      style="display:flex;align-items:center;justify-content:space-between;padding:0 1.6rem;height:74px;border-bottom:1px solid #1A1A1A;flex-shrink:0;">
+      <span style="font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:.06em;color:#F5F5F5;">IRON<span
+          style="color:#E8000E;">FORGE</span></span>
+      <button onclick="closeMob()"
+        style="background:none;border:none;color:#888;font-size:1.4rem;cursor:pointer;width:36px;height:36px;display:flex;align-items:center;justify-content:center;transition:color 0.2s;"
+        onmouseover="this.style.color='#E8000E'" onmouseout="this.style.color='#888'">&#x2715;</button>
     </div>
     <div style="display:flex;flex-direction:column;padding:1.5rem 0;flex:1;">
-      <a href="#home"       onclick="closeMob()" class="mob-lnk" style="font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:.04em;color:#F5F5F5;text-decoration:none;padding:.7rem 1.6rem;border-bottom:1px solid #1A1A1A;">Home</a>
-      <a href="#about"      onclick="closeMob()" class="mob-lnk" style="font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:.04em;color:#F5F5F5;text-decoration:none;padding:.7rem 1.6rem;border-bottom:1px solid #1A1A1A;">About</a>
-      <a href="#services"   onclick="closeMob()" class="mob-lnk" style="font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:.04em;color:#F5F5F5;text-decoration:none;padding:.7rem 1.6rem;border-bottom:1px solid #1A1A1A;">Services</a>
-      <a href="#trainers"   onclick="closeMob()" class="mob-lnk" style="font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:.04em;color:#F5F5F5;text-decoration:none;padding:.7rem 1.6rem;border-bottom:1px solid #1A1A1A;">Trainers</a>
-      <a href="#membership" onclick="closeMob()" class="mob-lnk" style="font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:.04em;color:#F5F5F5;text-decoration:none;padding:.7rem 1.6rem;border-bottom:1px solid #1A1A1A;">Membership</a>
-      <a href="#contact"    onclick="closeMob()" class="mob-lnk" style="font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:.04em;color:#F5F5F5;text-decoration:none;padding:.7rem 1.6rem;border-bottom:1px solid #1A1A1A;">Contact</a>
+      <a href="#home" onclick="closeMob()" class="mob-lnk"
+        style="font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:.04em;color:#F5F5F5;text-decoration:none;padding:.7rem 1.6rem;border-bottom:1px solid #1A1A1A;">Home</a>
+      <a href="#about" onclick="closeMob()" class="mob-lnk"
+        style="font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:.04em;color:#F5F5F5;text-decoration:none;padding:.7rem 1.6rem;border-bottom:1px solid #1A1A1A;">About</a>
+      <a href="#services" onclick="closeMob()" class="mob-lnk"
+        style="font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:.04em;color:#F5F5F5;text-decoration:none;padding:.7rem 1.6rem;border-bottom:1px solid #1A1A1A;">Services</a>
+      <a href="#trainers" onclick="closeMob()" class="mob-lnk"
+        style="font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:.04em;color:#F5F5F5;text-decoration:none;padding:.7rem 1.6rem;border-bottom:1px solid #1A1A1A;">Trainers</a>
+      <a href="#membership" onclick="closeMob()" class="mob-lnk"
+        style="font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:.04em;color:#F5F5F5;text-decoration:none;padding:.7rem 1.6rem;border-bottom:1px solid #1A1A1A;">Membership</a>
+      <a href="#contact" onclick="closeMob()" class="mob-lnk"
+        style="font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:.04em;color:#F5F5F5;text-decoration:none;padding:.7rem 1.6rem;border-bottom:1px solid #1A1A1A;">Contact</a>
     </div>
-    <div style="padding:1.5rem 1.6rem;border-top:1px solid #1A1A1A;display:flex;flex-direction:column;gap:1rem;flex-shrink:0;">
+    <div
+      style="padding:1.5rem 1.6rem;border-top:1px solid #1A1A1A;display:flex;flex-direction:column;gap:1rem;flex-shrink:0;">
       <a href="#membership" onclick="closeMob()"
         style="font-family:'Barlow Condensed',sans-serif;font-size:.95rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;background:#E8000E;color:#fff;padding:14px;text-align:center;display:block;text-decoration:none;clip-path:polygon(6px 0%,100% 0%,calc(100% - 6px) 100%,0% 100%);">
         JOIN NOW — FREE TRIAL
       </a>
       <div style="display:flex;gap:.7rem;justify-content:center;">
-        <a href="#" style="width:36px;height:36px;border:1px solid #2a2a2a;border-radius:3px;display:flex;align-items:center;justify-content:center;color:#666;font-size:.88rem;text-decoration:none;transition:all .25s;" onmouseover="this.style.borderColor='#E8000E';this.style.color='#E8000E';" onmouseout="this.style.borderColor='#2a2a2a';this.style.color='#666';"><i class="fab fa-instagram"></i></a>
-        <a href="#" style="width:36px;height:36px;border:1px solid #2a2a2a;border-radius:3px;display:flex;align-items:center;justify-content:center;color:#666;font-size:.88rem;text-decoration:none;transition:all .25s;" onmouseover="this.style.borderColor='#E8000E';this.style.color='#E8000E';" onmouseout="this.style.borderColor='#2a2a2a';this.style.color='#666';"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" style="width:36px;height:36px;border:1px solid #2a2a2a;border-radius:3px;display:flex;align-items:center;justify-content:center;color:#666;font-size:.88rem;text-decoration:none;transition:all .25s;" onmouseover="this.style.borderColor='#E8000E';this.style.color='#E8000E';" onmouseout="this.style.borderColor='#2a2a2a';this.style.color='#666';"><i class="fab fa-youtube"></i></a>
-        <a href="#" style="width:36px;height:36px;border:1px solid #2a2a2a;border-radius:3px;display:flex;align-items:center;justify-content:center;color:#666;font-size:.88rem;text-decoration:none;transition:all .25s;" onmouseover="this.style.borderColor='#E8000E';this.style.color='#E8000E';" onmouseout="this.style.borderColor='#2a2a2a';this.style.color='#666';"><i class="fab fa-tiktok"></i></a>
-        <a href="https://wa.me/1234567890" style="width:36px;height:36px;border:1px solid #2a2a2a;border-radius:3px;display:flex;align-items:center;justify-content:center;color:#666;font-size:.88rem;text-decoration:none;transition:all .25s;" onmouseover="this.style.borderColor='#25D366';this.style.color='#25D366';" onmouseout="this.style.borderColor='#2a2a2a';this.style.color='#666';"><i class="fab fa-whatsapp"></i></a>
+        <a href="#"
+          style="width:36px;height:36px;border:1px solid #2a2a2a;border-radius:3px;display:flex;align-items:center;justify-content:center;color:#666;font-size:.88rem;text-decoration:none;transition:all .25s;"
+          onmouseover="this.style.borderColor='#E8000E';this.style.color='#E8000E';"
+          onmouseout="this.style.borderColor='#2a2a2a';this.style.color='#666';"><i class="fab fa-instagram"></i></a>
+        <a href="#"
+          style="width:36px;height:36px;border:1px solid #2a2a2a;border-radius:3px;display:flex;align-items:center;justify-content:center;color:#666;font-size:.88rem;text-decoration:none;transition:all .25s;"
+          onmouseover="this.style.borderColor='#E8000E';this.style.color='#E8000E';"
+          onmouseout="this.style.borderColor='#2a2a2a';this.style.color='#666';"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"
+          style="width:36px;height:36px;border:1px solid #2a2a2a;border-radius:3px;display:flex;align-items:center;justify-content:center;color:#666;font-size:.88rem;text-decoration:none;transition:all .25s;"
+          onmouseover="this.style.borderColor='#E8000E';this.style.color='#E8000E';"
+          onmouseout="this.style.borderColor='#2a2a2a';this.style.color='#666';"><i class="fab fa-youtube"></i></a>
+        <a href="#"
+          style="width:36px;height:36px;border:1px solid #2a2a2a;border-radius:3px;display:flex;align-items:center;justify-content:center;color:#666;font-size:.88rem;text-decoration:none;transition:all .25s;"
+          onmouseover="this.style.borderColor='#E8000E';this.style.color='#E8000E';"
+          onmouseout="this.style.borderColor='#2a2a2a';this.style.color='#666';"><i class="fab fa-tiktok"></i></a>
+        <a href="https://wa.me/1234567890"
+          style="width:36px;height:36px;border:1px solid #2a2a2a;border-radius:3px;display:flex;align-items:center;justify-content:center;color:#666;font-size:.88rem;text-decoration:none;transition:all .25s;"
+          onmouseover="this.style.borderColor='#25D366';this.style.color='#25D366';"
+          onmouseout="this.style.borderColor='#2a2a2a';this.style.color='#666';"><i class="fab fa-whatsapp"></i></a>
       </div>
     </div>
   </div>
 
   <!-- Dark Overlay -->
   <div class="mob-overlay" id="mobOverlay" onclick="closeMob()"
-    style="position:fixed;inset:0;background:rgba(0,0,0,0.65);z-index:1001;backdrop-filter:blur(4px);cursor:pointer;"></div>
+    style="position:fixed;inset:0;background:rgba(0,0,0,0.65);z-index:1001;backdrop-filter:blur(4px);cursor:pointer;">
+  </div>
 
   <script>
     /* ── NAV: hamburger, scroll, active links ── */
-    const _hbg        = document.getElementById('hbg');
-    const _mobNav     = document.getElementById('mobNav');
+    const _hbg = document.getElementById('hbg');
+    const _mobNav = document.getElementById('mobNav');
     const _mobOverlay = document.getElementById('mobOverlay');
-    const _navbar     = document.getElementById('navbar');
+    const _navbar = document.getElementById('navbar');
 
     function openMob() {
-      _hbg.classList.add('open'); _hbg.setAttribute('aria-expanded','true');
+      _hbg.classList.add('open'); _hbg.setAttribute('aria-expanded', 'true');
       _mobNav.classList.add('open'); _mobOverlay.classList.add('show');
       document.body.style.overflow = 'hidden';
     }
     function closeMob() {
-      _hbg.classList.remove('open'); _hbg.setAttribute('aria-expanded','false');
+      _hbg.classList.remove('open'); _hbg.setAttribute('aria-expanded', 'false');
       _mobNav.classList.remove('open'); _mobOverlay.classList.remove('show');
       document.body.style.overflow = '';
     }
@@ -433,29 +1113,40 @@
   <!-- ═══════════════════════════════════════
      HERO SECTION
   ═══════════════════════════════════════ -->
-  <section id="home" style="min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;z-index:2;padding-top:76px;">
+  <section id="home"
+    style="min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;z-index:2;padding-top:76px;">
 
     <!-- BG Image -->
-    <div id="heroBg" style="position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1800&q=80');background-size:cover;background-position:center 30%;transform:scale(1.05);will-change:transform;"></div>
+    <div id="heroBg"
+      style="position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1800&q=80');background-size:cover;background-position:center 30%;transform:scale(1.05);will-change:transform;">
+    </div>
     <!-- Dark overlay -->
-    <div style="position:absolute;inset:0;background:linear-gradient(to bottom, rgba(10,10,10,.82) 0%, rgba(10,10,10,.72) 50%, rgba(10,10,10,.92) 100%);"></div>
+    <div
+      style="position:absolute;inset:0;background:linear-gradient(to bottom, rgba(10,10,10,.82) 0%, rgba(10,10,10,.72) 50%, rgba(10,10,10,.92) 100%);">
+    </div>
     <!-- Red accent lines -->
-    <div style="position:absolute;top:76px;left:0;right:0;height:3px;background:linear-gradient(to right,transparent,#E8000E,transparent);"></div>
-    <div style="position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(to right,transparent,#E8000E,transparent);"></div>
+    <div
+      style="position:absolute;top:76px;left:0;right:0;height:3px;background:linear-gradient(to right,transparent,#E8000E,transparent);">
+    </div>
+    <div
+      style="position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(to right,transparent,#E8000E,transparent);">
+    </div>
     <!-- Particle canvas (injected by JS) -->
 
     <!-- Content -->
-    <div style="position:relative;z-index:3;text-align:center;padding:2rem 5%;max-width:1100px;width:100%;display:flex;flex-direction:column;align-items:center;">
+    <div
+      style="position:relative;z-index:3;text-align:center;padding:2rem 5%;max-width:1100px;width:100%;display:flex;flex-direction:column;align-items:center;">
 
-      <h1 class="h-title" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,8vw,5rem);line-height:1;letter-spacing:.03em;text-transform:uppercase;margin-bottom:1.6rem;text-align:center;">
+      <h1 class="h-title"
+        style="font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,8vw,5rem);line-height:1;letter-spacing:.03em;text-transform:uppercase;margin-bottom:1.6rem;text-align:center;">
         <span id="typed-white" style="color:#F5F5F5;display:block;"></span>
-        <span id="typed-red"   style="color:#E8000E;-webkit-text-stroke:1px #E8000E;display:block;"></span>
+        <span id="typed-red" style="color:#E8000E;-webkit-text-stroke:1px #E8000E;display:block;"></span>
       </h1>
 
       <script>
         /* ── TYPED TEXT ── */
         const textWhite = 'SWEAT TODAY,';
-        const textRed   = 'SHINE TOMORROW';
+        const textRed = 'SHINE TOMORROW';
         let iW = 0, iR = 0;
         function typeWhite() {
           if (iW < textWhite.length) { document.getElementById('typed-white').innerHTML += textWhite.charAt(iW++); setTimeout(typeWhite, 90); }
@@ -468,7 +1159,8 @@
       </script>
 
       <!-- Subtitle -->
-      <p class="h-sub" style="font-size:clamp(.95rem,2.2vw,1.15rem);font-weight:300;line-height:1.85;color:rgba(245,245,245,.75);max-width:600px;margin-bottom:2.8rem;text-align:center;">
+      <p class="h-sub"
+        style="font-size:clamp(.95rem,2.2vw,1.15rem);font-weight:300;line-height:1.85;color:rgba(245,245,245,.75);max-width:600px;margin-bottom:2.8rem;text-align:center;">
         Every drop of sweat brings you closer to the champion you were born to be.
       </p>
 
@@ -486,8 +1178,10 @@
     </div>
 
     <!-- Scroll arrow -->
-    <div class="scroll-arrow" style="position:absolute;bottom:1.6rem;left:50%;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:6px;">
-      <span style="font-family:'Barlow Condensed',sans-serif;font-size:.65rem;letter-spacing:.3em;text-transform:uppercase;color:#555;">Scroll</span>
+    <div class="scroll-arrow"
+      style="position:absolute;bottom:1.6rem;left:50%;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:6px;">
+      <span
+        style="font-family:'Barlow Condensed',sans-serif;font-size:.65rem;letter-spacing:.3em;text-transform:uppercase;color:#555;">Scroll</span>
       <i class="fas fa-chevron-down" style="color:#E8000E;font-size:.9rem;"></i>
     </div>
   </section>
@@ -509,8 +1203,8 @@
       btns.forEach(btn => {
         btn.addEventListener('mousemove', e => {
           const r = btn.getBoundingClientRect();
-          const x = ((e.clientX - r.left) - r.width  / 2) * 0.14;
-          const y = ((e.clientY - r.top)  - r.height / 2) * 0.14;
+          const x = ((e.clientX - r.left) - r.width / 2) * 0.14;
+          const y = ((e.clientY - r.top) - r.height / 2) * 0.14;
           btn.style.transform = `translate(${x}px, ${y}px)`;
         });
         btn.addEventListener('mouseleave', () => {
@@ -525,23 +1219,39 @@
   <!-- ── TICKER ── -->
   <div style="background:#E8000E;padding:13px 0;overflow:hidden;position:relative;z-index:2;">
     <div class="ticker-inner" id="tickerTrack" style="display:flex;gap:3rem;white-space:nowrap;will-change:transform;">
-      <span style="font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:.12em;flex-shrink:0;">Strength Training <span style="opacity:.5;margin-left:1rem;">✦</span></span>
-      <span style="font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:.12em;flex-shrink:0;">HIIT Workouts <span style="opacity:.5;margin-left:1rem;">✦</span></span>
-      <span style="font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:.12em;flex-shrink:0;">Nutrition Plans <span style="opacity:.5;margin-left:1rem;">✦</span></span>
-      <span style="font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:.12em;flex-shrink:0;">Personal Training <span style="opacity:.5;margin-left:1rem;">✦</span></span>
-      <span style="font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:.12em;flex-shrink:0;">Yoga &amp; Mobility <span style="opacity:.5;margin-left:1rem;">✦</span></span>
-      <span style="font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:.12em;flex-shrink:0;">MMA &amp; Boxing <span style="opacity:.5;margin-left:1rem;">✦</span></span>
-      <span style="font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:.12em;flex-shrink:0;">Body Transformation <span style="opacity:.5;margin-left:1rem;">✦</span></span>
-      <span style="font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:.12em;flex-shrink:0;">Cardio Zone <span style="opacity:.5;margin-left:1rem;">✦</span></span>
+      <span style="font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:.12em;flex-shrink:0;">Strength
+        Training <span style="opacity:.5;margin-left:1rem;">✦</span></span>
+      <span style="font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:.12em;flex-shrink:0;">HIIT
+        Workouts <span style="opacity:.5;margin-left:1rem;">✦</span></span>
+      <span style="font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:.12em;flex-shrink:0;">Nutrition
+        Plans <span style="opacity:.5;margin-left:1rem;">✦</span></span>
+      <span style="font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:.12em;flex-shrink:0;">Personal
+        Training <span style="opacity:.5;margin-left:1rem;">✦</span></span>
+      <span style="font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:.12em;flex-shrink:0;">Yoga &amp;
+        Mobility <span style="opacity:.5;margin-left:1rem;">✦</span></span>
+      <span style="font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:.12em;flex-shrink:0;">MMA &amp;
+        Boxing <span style="opacity:.5;margin-left:1rem;">✦</span></span>
+      <span style="font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:.12em;flex-shrink:0;">Body
+        Transformation <span style="opacity:.5;margin-left:1rem;">✦</span></span>
+      <span style="font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:.12em;flex-shrink:0;">Cardio
+        Zone <span style="opacity:.5;margin-left:1rem;">✦</span></span>
       <!-- duplicate set for seamless loop -->
-      <span style="font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:.12em;flex-shrink:0;">Strength Training <span style="opacity:.5;margin-left:1rem;">✦</span></span>
-      <span style="font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:.12em;flex-shrink:0;">HIIT Workouts <span style="opacity:.5;margin-left:1rem;">✦</span></span>
-      <span style="font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:.12em;flex-shrink:0;">Nutrition Plans <span style="opacity:.5;margin-left:1rem;">✦</span></span>
-      <span style="font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:.12em;flex-shrink:0;">Personal Training <span style="opacity:.5;margin-left:1rem;">✦</span></span>
-      <span style="font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:.12em;flex-shrink:0;">Yoga &amp; Mobility <span style="opacity:.5;margin-left:1rem;">✦</span></span>
-      <span style="font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:.12em;flex-shrink:0;">MMA &amp; Boxing <span style="opacity:.5;margin-left:1rem;">✦</span></span>
-      <span style="font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:.12em;flex-shrink:0;">Body Transformation <span style="opacity:.5;margin-left:1rem;">✦</span></span>
-      <span style="font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:.12em;flex-shrink:0;">Cardio Zone <span style="opacity:.5;margin-left:1rem;">✦</span></span>
+      <span style="font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:.12em;flex-shrink:0;">Strength
+        Training <span style="opacity:.5;margin-left:1rem;">✦</span></span>
+      <span style="font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:.12em;flex-shrink:0;">HIIT
+        Workouts <span style="opacity:.5;margin-left:1rem;">✦</span></span>
+      <span style="font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:.12em;flex-shrink:0;">Nutrition
+        Plans <span style="opacity:.5;margin-left:1rem;">✦</span></span>
+      <span style="font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:.12em;flex-shrink:0;">Personal
+        Training <span style="opacity:.5;margin-left:1rem;">✦</span></span>
+      <span style="font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:.12em;flex-shrink:0;">Yoga &amp;
+        Mobility <span style="opacity:.5;margin-left:1rem;">✦</span></span>
+      <span style="font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:.12em;flex-shrink:0;">MMA &amp;
+        Boxing <span style="opacity:.5;margin-left:1rem;">✦</span></span>
+      <span style="font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:.12em;flex-shrink:0;">Body
+        Transformation <span style="opacity:.5;margin-left:1rem;">✦</span></span>
+      <span style="font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:.12em;flex-shrink:0;">Cardio
+        Zone <span style="opacity:.5;margin-left:1rem;">✦</span></span>
     </div>
   </div>
 
@@ -560,7 +1270,8 @@
      ABOUT
   ═══════════════════════════════════════ -->
   <section id="about" style="padding:7rem 5%;background:#111;position:relative;z-index:2;">
-    <div class="about-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;max-width:1200px;margin:0 auto;">
+    <div class="about-grid"
+      style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;max-width:1200px;margin:0 auto;">
 
       <!-- Images -->
       <div class="about-imgs reveal" style="position:relative;height:540px;">
@@ -568,33 +1279,60 @@
           style="position:absolute;top:0;left:0;width:70%;height:78%;object-fit:cover;filter:brightness(.85);border:3px solid #1A1A1A;display:block;" />
         <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=600&q=80" alt="Training"
           style="position:absolute;bottom:0;right:0;width:52%;height:48%;object-fit:cover;filter:brightness(.85);border:3px solid #E8000E;display:block;" />
-        <div style="position:absolute;top:50%;left:55%;transform:translate(-50%,-50%);width:110px;height:110px;background:#E8000E;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;border:4px solid #111;z-index:2;">
+        <div
+          style="position:absolute;top:50%;left:55%;transform:translate(-50%,-50%);width:110px;height:110px;background:#E8000E;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;border:4px solid #111;z-index:2;">
           <span style="font-family:'Bebas Neue',sans-serif;font-size:2rem;line-height:1;color:#fff;">#1</span>
-          <span style="font-family:'Barlow Condensed',sans-serif;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:#fff;text-align:center;line-height:1.4;">Rated<br>Gym</span>
+          <span
+            style="font-family:'Barlow Condensed',sans-serif;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:#fff;text-align:center;line-height:1.4;">Rated<br>Gym</span>
         </div>
       </div>
 
       <!-- Text -->
       <div>
-        <div class="reveal" style="font-family:'Barlow Condensed',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.35em;text-transform:uppercase;color:#E8000E;display:flex;align-items:center;gap:10px;margin-bottom:.9rem;">
+        <div class="reveal"
+          style="font-family:'Barlow Condensed',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.35em;text-transform:uppercase;color:#E8000E;display:flex;align-items:center;gap:10px;margin-bottom:.9rem;">
           <span style="width:28px;height:2px;background:#E8000E;display:inline-block;"></span>About IronForge
         </div>
-        <h2 class="reveal rd1" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,5vw,4.8rem);line-height:.93;letter-spacing:.03em;text-transform:uppercase;margin-bottom:1.4rem;">
+        <h2 class="reveal rd1"
+          style="font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,5vw,4.8rem);line-height:.93;letter-spacing:.03em;text-transform:uppercase;margin-bottom:1.4rem;">
           WE BUILD<br><span style="color:#E8000E;">CHAMPIONS</span>
         </h2>
-        <p class="reveal rd2" style="font-size:1rem;font-weight:500;line-height:1.8;color:#CCCCCC;margin-bottom:1.3rem;border-left:3px solid #E8000E;padding-left:1rem;">
-          IronForge isn't just a gym — it's a movement. Founded on the belief that every person carries the potential to become extraordinary.
+        <p class="reveal rd2"
+          style="font-size:1rem;font-weight:500;line-height:1.8;color:#CCCCCC;margin-bottom:1.3rem;border-left:3px solid #E8000E;padding-left:1rem;">
+          IronForge isn't just a gym — it's a movement. Founded on the belief that every person carries the potential to
+          become extraordinary.
         </p>
         <p class="reveal rd3" style="font-size:.9rem;font-weight:300;line-height:1.95;color:#888;margin-bottom:2.2rem;">
-          Since 2010, we've transformed thousands of lives through science-backed training, personalized nutrition guidance, and an unbreakable community spirit. Our 15,000 sq ft facility is equipped with the latest technology, staffed by certified elite coaches passionate about your progress.
+          Since 2010, we've transformed thousands of lives through science-backed training, personalized nutrition
+          guidance, and an unbreakable community spirit. Our 15,000 sq ft facility is equipped with the latest
+          technology, staffed by certified elite coaches passionate about your progress.
         </p>
-        <div class="about-feats reveal rd3" style="display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-bottom:2.2rem;">
-          <div style="display:flex;align-items:center;gap:8px;font-family:'Barlow Condensed',sans-serif;font-size:.85rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:#CCCCCC;"><i class="fas fa-check-circle" style="color:#E8000E;"></i>24/7 Access</div>
-          <div style="display:flex;align-items:center;gap:8px;font-family:'Barlow Condensed',sans-serif;font-size:.85rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:#CCCCCC;"><i class="fas fa-check-circle" style="color:#E8000E;"></i>Expert Trainers</div>
-          <div style="display:flex;align-items:center;gap:8px;font-family:'Barlow Condensed',sans-serif;font-size:.85rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:#CCCCCC;"><i class="fas fa-check-circle" style="color:#E8000E;"></i>Modern Equipment</div>
-          <div style="display:flex;align-items:center;gap:8px;font-family:'Barlow Condensed',sans-serif;font-size:.85rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:#CCCCCC;"><i class="fas fa-check-circle" style="color:#E8000E;"></i>Nutrition Guidance</div>
-          <div style="display:flex;align-items:center;gap:8px;font-family:'Barlow Condensed',sans-serif;font-size:.85rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:#CCCCCC;"><i class="fas fa-check-circle" style="color:#E8000E;"></i>Group Classes</div>
-          <div style="display:flex;align-items:center;gap:8px;font-family:'Barlow Condensed',sans-serif;font-size:.85rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:#CCCCCC;"><i class="fas fa-check-circle" style="color:#E8000E;"></i>Recovery Zone</div>
+        <div class="about-feats reveal rd3"
+          style="display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-bottom:2.2rem;">
+          <div
+            style="display:flex;align-items:center;gap:8px;font-family:'Barlow Condensed',sans-serif;font-size:.85rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:#CCCCCC;">
+            <i class="fas fa-check-circle" style="color:#E8000E;"></i>24/7 Access
+          </div>
+          <div
+            style="display:flex;align-items:center;gap:8px;font-family:'Barlow Condensed',sans-serif;font-size:.85rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:#CCCCCC;">
+            <i class="fas fa-check-circle" style="color:#E8000E;"></i>Expert Trainers
+          </div>
+          <div
+            style="display:flex;align-items:center;gap:8px;font-family:'Barlow Condensed',sans-serif;font-size:.85rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:#CCCCCC;">
+            <i class="fas fa-check-circle" style="color:#E8000E;"></i>Modern Equipment
+          </div>
+          <div
+            style="display:flex;align-items:center;gap:8px;font-family:'Barlow Condensed',sans-serif;font-size:.85rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:#CCCCCC;">
+            <i class="fas fa-check-circle" style="color:#E8000E;"></i>Nutrition Guidance
+          </div>
+          <div
+            style="display:flex;align-items:center;gap:8px;font-family:'Barlow Condensed',sans-serif;font-size:.85rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:#CCCCCC;">
+            <i class="fas fa-check-circle" style="color:#E8000E;"></i>Group Classes
+          </div>
+          <div
+            style="display:flex;align-items:center;gap:8px;font-family:'Barlow Condensed',sans-serif;font-size:.85rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:#CCCCCC;">
+            <i class="fas fa-check-circle" style="color:#E8000E;"></i>Recovery Zone
+          </div>
         </div>
         <a href="#services" class="btn-red reveal rd4"
           style="font-family:'Barlow Condensed',sans-serif;font-size:.88rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;padding:14px 32px;background:#E8000E;color:#fff;border:2px solid #E8000E;display:inline-flex;align-items:center;gap:8px;clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);">
@@ -623,68 +1361,129 @@
   ═══════════════════════════════════════ -->
   <section id="services" style="padding:7rem 5%;background:#0A0A0A;position:relative;z-index:2;">
     <div style="max-width:1200px;margin:0 auto;">
-      <div class="svc-header" style="display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:end;margin-bottom:4rem;">
+      <div class="svc-header"
+        style="display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:end;margin-bottom:4rem;">
         <div>
-          <div class="reveal" style="font-family:'Barlow Condensed',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.35em;text-transform:uppercase;color:#E8000E;display:flex;align-items:center;gap:10px;margin-bottom:.9rem;">
+          <div class="reveal"
+            style="font-family:'Barlow Condensed',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.35em;text-transform:uppercase;color:#E8000E;display:flex;align-items:center;gap:10px;margin-bottom:.9rem;">
             <span style="width:28px;height:2px;background:#E8000E;display:inline-block;"></span>What We Offer
           </div>
-          <h2 class="reveal rd1" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,5vw,4.8rem);line-height:.93;letter-spacing:.03em;text-transform:uppercase;">
+          <h2 class="reveal rd1"
+            style="font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,5vw,4.8rem);line-height:.93;letter-spacing:.03em;text-transform:uppercase;">
             OUR <span style="color:#E8000E;">PROGRAMS</span>
           </h2>
         </div>
         <p class="reveal rd2" style="font-size:.9rem;font-weight:300;line-height:1.9;color:#666;align-self:end;">
-          Every program is designed by elite coaches to maximize your results. Whether building muscle, shredding fat, or mastering martial arts — we have a proven path for you.
+          Every program is designed by elite coaches to maximize your results. Whether building muscle, shredding fat,
+          or mastering martial arts — we have a proven path for you.
         </p>
       </div>
 
       <div class="svc-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:3px;">
-        <div class="service-card svc-main reveal" style="position:relative;overflow:hidden;grid-row:span 2;min-height:580px;cursor:pointer;">
-          <img class="svc-img" src="https://images.unsplash.com/photo-1550977616-efc580084ac5?w=900&q=80" alt="Strength" style="width:100%;height:100%;object-fit:cover;filter:brightness(.45);display:block;" />
-          <div class="svc-overlay" style="position:absolute;inset:0;padding:2rem;display:flex;flex-direction:column;justify-content:flex-end;background:linear-gradient(to top,rgba(10,10,10,.9) 0%,transparent 55%);">
-            <div style="font-family:'Barlow Condensed',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:#E8000E;margin-bottom:.5rem;">Core Program</div>
-            <div class="svc-icon" style="width:46px;height:46px;border:2px solid #E8000E;display:flex;align-items:center;justify-content:center;margin-bottom:.8rem;font-size:1.2rem;color:#E8000E;"><i class="fas fa-dumbbell"></i></div>
-            <div style="font-family:'Bebas Neue',sans-serif;font-size:1.7rem;letter-spacing:.04em;text-transform:uppercase;line-height:1;margin-bottom:.5rem;">Strength &amp; Power</div>
-            <div class="svc-desc" style="font-size:.83rem;font-weight:300;line-height:1.75;color:#CCC;max-height:0;overflow:hidden;opacity:0;">Build raw strength with progressive overload methodologies guided by certified strength and conditioning coaches.</div>
+        <div class="service-card svc-main reveal"
+          style="position:relative;overflow:hidden;grid-row:span 2;min-height:580px;cursor:pointer;">
+          <img class="svc-img" src="https://images.unsplash.com/photo-1550977616-efc580084ac5?w=900&q=80" alt="Strength"
+            style="width:100%;height:100%;object-fit:cover;filter:brightness(.45);display:block;" />
+          <div class="svc-overlay"
+            style="position:absolute;inset:0;padding:2rem;display:flex;flex-direction:column;justify-content:flex-end;background:linear-gradient(to top,rgba(10,10,10,.9) 0%,transparent 55%);">
+            <div
+              style="font-family:'Barlow Condensed',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:#E8000E;margin-bottom:.5rem;">
+              Core Program</div>
+            <div class="svc-icon"
+              style="width:46px;height:46px;border:2px solid #E8000E;display:flex;align-items:center;justify-content:center;margin-bottom:.8rem;font-size:1.2rem;color:#E8000E;">
+              <i class="fas fa-dumbbell"></i>
+            </div>
+            <div
+              style="font-family:'Bebas Neue',sans-serif;font-size:1.7rem;letter-spacing:.04em;text-transform:uppercase;line-height:1;margin-bottom:.5rem;">
+              Strength &amp; Power</div>
+            <div class="svc-desc"
+              style="font-size:.83rem;font-weight:300;line-height:1.75;color:#CCC;max-height:0;overflow:hidden;opacity:0;">
+              Build raw strength with progressive overload methodologies guided by certified strength and conditioning
+              coaches.</div>
           </div>
         </div>
 
         <div class="service-card reveal rd1" style="position:relative;overflow:hidden;aspect-ratio:3/4;cursor:pointer;">
-          <img class="svc-img" src="https://images.unsplash.com/photo-1600618528240-fb9fc964b853?w=600&q=80" alt="HIIT" style="width:100%;height:100%;object-fit:cover;filter:brightness(.45);display:block;" />
-          <div class="svc-overlay" style="position:absolute;inset:0;padding:1.5rem;display:flex;flex-direction:column;justify-content:flex-end;background:linear-gradient(to top,rgba(10,10,10,.9) 0%,transparent 55%);">
-            <div style="font-family:'Barlow Condensed',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:#E8000E;margin-bottom:.4rem;">Fat Loss</div>
-            <div class="svc-icon" style="width:46px;height:46px;border:2px solid #E8000E;display:flex;align-items:center;justify-content:center;margin-bottom:.8rem;font-size:1.2rem;color:#E8000E;"><i class="fas fa-fire"></i></div>
-            <div style="font-family:'Bebas Neue',sans-serif;font-size:1.7rem;letter-spacing:.04em;text-transform:uppercase;line-height:1;margin-bottom:.4rem;">HIIT Burn</div>
-            <div class="svc-desc" style="font-size:.83rem;font-weight:300;line-height:1.75;color:#CCC;max-height:0;overflow:hidden;opacity:0;">High-intensity interval training to torch calories and spike your metabolism.</div>
+          <img class="svc-img" src="https://images.unsplash.com/photo-1600618528240-fb9fc964b853?w=600&q=80" alt="HIIT"
+            style="width:100%;height:100%;object-fit:cover;filter:brightness(.45);display:block;" />
+          <div class="svc-overlay"
+            style="position:absolute;inset:0;padding:1.5rem;display:flex;flex-direction:column;justify-content:flex-end;background:linear-gradient(to top,rgba(10,10,10,.9) 0%,transparent 55%);">
+            <div
+              style="font-family:'Barlow Condensed',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:#E8000E;margin-bottom:.4rem;">
+              Fat Loss</div>
+            <div class="svc-icon"
+              style="width:46px;height:46px;border:2px solid #E8000E;display:flex;align-items:center;justify-content:center;margin-bottom:.8rem;font-size:1.2rem;color:#E8000E;">
+              <i class="fas fa-fire"></i>
+            </div>
+            <div
+              style="font-family:'Bebas Neue',sans-serif;font-size:1.7rem;letter-spacing:.04em;text-transform:uppercase;line-height:1;margin-bottom:.4rem;">
+              HIIT Burn</div>
+            <div class="svc-desc"
+              style="font-size:.83rem;font-weight:300;line-height:1.75;color:#CCC;max-height:0;overflow:hidden;opacity:0;">
+              High-intensity interval training to torch calories and spike your metabolism.</div>
           </div>
         </div>
 
         <div class="service-card reveal rd2" style="position:relative;overflow:hidden;aspect-ratio:3/4;cursor:pointer;">
-          <img class="svc-img" src="https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?w=600&q=80" alt="MMA" style="width:100%;height:100%;object-fit:cover;filter:brightness(.45);display:block;" />
-          <div class="svc-overlay" style="position:absolute;inset:0;padding:1.5rem;display:flex;flex-direction:column;justify-content:flex-end;background:linear-gradient(to top,rgba(10,10,10,.9) 0%,transparent 55%);">
-            <div style="font-family:'Barlow Condensed',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:#E8000E;margin-bottom:.4rem;">Combat</div>
-            <div class="svc-icon" style="width:46px;height:46px;border:2px solid #E8000E;display:flex;align-items:center;justify-content:center;margin-bottom:.8rem;font-size:1.2rem;color:#E8000E;"><i class="fas fa-fist-raised"></i></div>
-            <div style="font-family:'Bebas Neue',sans-serif;font-size:1.7rem;letter-spacing:.04em;text-transform:uppercase;line-height:1;margin-bottom:.4rem;">MMA &amp; Boxing</div>
-            <div class="svc-desc" style="font-size:.83rem;font-weight:300;line-height:1.75;color:#CCC;max-height:0;overflow:hidden;opacity:0;">Train like a fighter. Professional ring, heavy bags, and ex-pro coaches.</div>
+          <img class="svc-img" src="https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?w=600&q=80" alt="MMA"
+            style="width:100%;height:100%;object-fit:cover;filter:brightness(.45);display:block;" />
+          <div class="svc-overlay"
+            style="position:absolute;inset:0;padding:1.5rem;display:flex;flex-direction:column;justify-content:flex-end;background:linear-gradient(to top,rgba(10,10,10,.9) 0%,transparent 55%);">
+            <div
+              style="font-family:'Barlow Condensed',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:#E8000E;margin-bottom:.4rem;">
+              Combat</div>
+            <div class="svc-icon"
+              style="width:46px;height:46px;border:2px solid #E8000E;display:flex;align-items:center;justify-content:center;margin-bottom:.8rem;font-size:1.2rem;color:#E8000E;">
+              <i class="fas fa-fist-raised"></i>
+            </div>
+            <div
+              style="font-family:'Bebas Neue',sans-serif;font-size:1.7rem;letter-spacing:.04em;text-transform:uppercase;line-height:1;margin-bottom:.4rem;">
+              MMA &amp; Boxing</div>
+            <div class="svc-desc"
+              style="font-size:.83rem;font-weight:300;line-height:1.75;color:#CCC;max-height:0;overflow:hidden;opacity:0;">
+              Train like a fighter. Professional ring, heavy bags, and ex-pro coaches.</div>
           </div>
         </div>
 
         <div class="service-card reveal rd1" style="position:relative;overflow:hidden;aspect-ratio:3/4;cursor:pointer;">
-          <img class="svc-img" src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&q=80" alt="Cardio" style="width:100%;height:100%;object-fit:cover;filter:brightness(.45);display:block;" />
-          <div class="svc-overlay" style="position:absolute;inset:0;padding:1.5rem;display:flex;flex-direction:column;justify-content:flex-end;background:linear-gradient(to top,rgba(10,10,10,.9) 0%,transparent 55%);">
-            <div style="font-family:'Barlow Condensed',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:#E8000E;margin-bottom:.4rem;">Endurance</div>
-            <div class="svc-icon" style="width:46px;height:46px;border:2px solid #E8000E;display:flex;align-items:center;justify-content:center;margin-bottom:.8rem;font-size:1.2rem;color:#E8000E;"><i class="fas fa-heartbeat"></i></div>
-            <div style="font-family:'Bebas Neue',sans-serif;font-size:1.7rem;letter-spacing:.04em;text-transform:uppercase;line-height:1;margin-bottom:.4rem;">Cardio Zone</div>
-            <div class="svc-desc" style="font-size:.83rem;font-weight:300;line-height:1.75;color:#CCC;max-height:0;overflow:hidden;opacity:0;">State-of-the-art treadmills, bikes, and rowers for peak cardiovascular health.</div>
+          <img class="svc-img" src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&q=80"
+            alt="Cardio" style="width:100%;height:100%;object-fit:cover;filter:brightness(.45);display:block;" />
+          <div class="svc-overlay"
+            style="position:absolute;inset:0;padding:1.5rem;display:flex;flex-direction:column;justify-content:flex-end;background:linear-gradient(to top,rgba(10,10,10,.9) 0%,transparent 55%);">
+            <div
+              style="font-family:'Barlow Condensed',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:#E8000E;margin-bottom:.4rem;">
+              Endurance</div>
+            <div class="svc-icon"
+              style="width:46px;height:46px;border:2px solid #E8000E;display:flex;align-items:center;justify-content:center;margin-bottom:.8rem;font-size:1.2rem;color:#E8000E;">
+              <i class="fas fa-heartbeat"></i>
+            </div>
+            <div
+              style="font-family:'Bebas Neue',sans-serif;font-size:1.7rem;letter-spacing:.04em;text-transform:uppercase;line-height:1;margin-bottom:.4rem;">
+              Cardio Zone</div>
+            <div class="svc-desc"
+              style="font-size:.83rem;font-weight:300;line-height:1.75;color:#CCC;max-height:0;overflow:hidden;opacity:0;">
+              State-of-the-art treadmills, bikes, and rowers for peak cardiovascular health.</div>
           </div>
         </div>
 
         <div class="service-card reveal rd2" style="position:relative;overflow:hidden;aspect-ratio:3/4;cursor:pointer;">
-          <img class="svc-img" src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600&q=80" alt="Yoga" style="width:100%;height:100%;object-fit:cover;filter:brightness(.45);display:block;" />
-          <div class="svc-overlay" style="position:absolute;inset:0;padding:1.5rem;display:flex;flex-direction:column;justify-content:flex-end;background:linear-gradient(to top,rgba(10,10,10,.9) 0%,transparent 55%);">
-            <div style="font-family:'Barlow Condensed',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:#E8000E;margin-bottom:.4rem;">Recovery</div>
-            <div class="svc-icon" style="width:46px;height:46px;border:2px solid #E8000E;display:flex;align-items:center;justify-content:center;margin-bottom:.8rem;font-size:1.2rem;color:#E8000E;"><i class="fas fa-spa"></i></div>
-            <div style="font-family:'Bebas Neue',sans-serif;font-size:1.7rem;letter-spacing:.04em;text-transform:uppercase;line-height:1;margin-bottom:.4rem;">Yoga &amp; Flex</div>
-            <div class="svc-desc" style="font-size:.83rem;font-weight:300;line-height:1.75;color:#CCC;max-height:0;overflow:hidden;opacity:0;">Mobility and flexibility sessions — essential for peak athletic performance.</div>
+          <img class="svc-img" src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600&q=80" alt="Yoga"
+            style="width:100%;height:100%;object-fit:cover;filter:brightness(.45);display:block;" />
+          <div class="svc-overlay"
+            style="position:absolute;inset:0;padding:1.5rem;display:flex;flex-direction:column;justify-content:flex-end;background:linear-gradient(to top,rgba(10,10,10,.9) 0%,transparent 55%);">
+            <div
+              style="font-family:'Barlow Condensed',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:#E8000E;margin-bottom:.4rem;">
+              Recovery</div>
+            <div class="svc-icon"
+              style="width:46px;height:46px;border:2px solid #E8000E;display:flex;align-items:center;justify-content:center;margin-bottom:.8rem;font-size:1.2rem;color:#E8000E;">
+              <i class="fas fa-spa"></i>
+            </div>
+            <div
+              style="font-family:'Bebas Neue',sans-serif;font-size:1.7rem;letter-spacing:.04em;text-transform:uppercase;line-height:1;margin-bottom:.4rem;">
+              Yoga &amp; Flex</div>
+            <div class="svc-desc"
+              style="font-size:.83rem;font-weight:300;line-height:1.75;color:#CCC;max-height:0;overflow:hidden;opacity:0;">
+              Mobility and flexibility sessions — essential for peak athletic performance.</div>
           </div>
         </div>
       </div>
@@ -706,185 +1505,233 @@
   <!-- ═══════════════════════════════════════
      TRAINERS
   ═══════════════════════════════════════ -->
-  <section id="trainers" style="padding:7rem 5%;background:#111;overflow:hidden;position:relative;z-index:2;">
-    <div style="max-width:1200px;margin:0 auto;">
-      <div style="text-align:center;margin-bottom:3.5rem;">
-        <div class="reveal" style="font-family:'Barlow Condensed',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.35em;text-transform:uppercase;color:#E8000E;display:inline-flex;align-items:center;gap:10px;margin-bottom:.9rem;">The Team</div>
-        <h2 class="reveal rd1" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,5vw,4.8rem);line-height:.93;letter-spacing:.03em;text-transform:uppercase;">
-          MEET YOUR <span style="color:#E8000E;">COACHES</span>
-        </h2>
-      </div>
+  <section style="padding:6rem 5%;background:#0A0A0A;color:white;font-family:sans-serif;overflow:hidden">
 
-      <div id="trSlider" style="display:flex;gap:1.8rem;overflow-x:auto;padding-bottom:.5rem;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;">
+    <h2 style="text-align:center;font-size:clamp(2rem,4vw,3.5rem);margin-bottom:3rem;">
+      OUR <span style="color:#E8000E;">COACHES</span>
+    </h2>
 
-        <div class="trainer-card" style="flex:0 0 clamp(240px,30vw,300px);scroll-snap-align:start;cursor:pointer;border:1px solid #1A1A1A;">
-          <img class="tr-img" src="https://images.unsplash.com/photo-1571731956672-f2b94d7dd0cb?w=400&q=80" alt="Coach" style="width:100%;height:360px;object-fit:cover;object-position:top;filter:brightness(.8);display:block;" />
-          <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(10,10,10,.95) 0%,transparent 80%);padding:1.4rem;">
-            <div style="font-family:'Barlow Condensed',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:#E8000E;margin-bottom:.25rem;">Head Coach / Powerlifting</div>
-            <div style="font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:.03em;text-transform:uppercase;line-height:1;margin-bottom:.7rem;">Marcus Steel</div>
-            <div class="tr-socials" style="display:flex;gap:.6rem;opacity:0;transform:translateY(10px);">
-              <a href="#" class="tr-soc" style="width:30px;height:30px;border:1px solid rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;font-size:.78rem;color:#F5F5F5;text-decoration:none;"><i class="fab fa-instagram"></i></a>
-              <a href="#" class="tr-soc" style="width:30px;height:30px;border:1px solid rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;font-size:.78rem;color:#F5F5F5;text-decoration:none;"><i class="fab fa-youtube"></i></a>
-            </div>
-          </div>
+    <div style="position:relative;max-width:1200px;margin:auto;overflow:hidden">
+
+      <div id="coachTrack" style="display:flex;transition:transform .6s ease">
+
+        <!-- coach -->
+
+        <div class="coachCard" style="flex:0 0 33.33%;padding:20px;box-sizing:border-box;text-align:center">
+          <img src="https://images.unsplash.com/photo-1571731956672-f2b94d7dd0cb?w=500"
+            style="width:100%;height:300px;object-fit:cover;border-radius:6px;margin-bottom:12px">
+          <h3 style="margin:6px 0;font-size:20px">Marcus Steel</h3>
+          <p style="color:#E8000E;font-size:13px;letter-spacing:1px">Strength Coach</p>
+          <p style="font-size:14px;color:#aaa">10+ years building elite strength athletes.</p>
         </div>
 
-        <div class="trainer-card" style="flex:0 0 clamp(240px,30vw,300px);scroll-snap-align:start;cursor:pointer;border:1px solid #1A1A1A;">
-          <img class="tr-img" src="https://images.unsplash.com/photo-1609899537878-4b3ef2d28218?w=400&q=80" alt="Coach" style="width:100%;height:360px;object-fit:cover;object-position:top;filter:brightness(.8);display:block;" />
-          <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(10,10,10,.95) 0%,transparent 80%);padding:1.4rem;">
-            <div style="font-family:'Barlow Condensed',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:#E8000E;margin-bottom:.25rem;">HIIT Specialist</div>
-            <div style="font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:.03em;text-transform:uppercase;line-height:1;margin-bottom:.7rem;">Aria Blaze</div>
-            <div class="tr-socials" style="display:flex;gap:.6rem;opacity:0;transform:translateY(10px);">
-              <a href="#" class="tr-soc" style="width:30px;height:30px;border:1px solid rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;font-size:.78rem;color:#F5F5F5;text-decoration:none;"><i class="fab fa-instagram"></i></a>
-              <a href="#" class="tr-soc" style="width:30px;height:30px;border:1px solid rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;font-size:.78rem;color:#F5F5F5;text-decoration:none;"><i class="fab fa-tiktok"></i></a>
-            </div>
-          </div>
+        <div class="coachCard" style="flex:0 0 33.33%;padding:20px;box-sizing:border-box;text-align:center">
+          <img src="https://images.unsplash.com/photo-1609899537878-4b3ef2d28218?w=500"
+            style="width:100%;height:300px;object-fit:cover;border-radius:6px;margin-bottom:12px">
+          <h3 style="margin:6px 0;font-size:20px">Aria Blaze</h3>
+          <p style="color:#E8000E;font-size:13px;letter-spacing:1px">HIIT Trainer</p>
+          <p style="font-size:14px;color:#aaa">Fat loss specialist & conditioning expert.</p>
         </div>
 
-        <div class="trainer-card" style="flex:0 0 clamp(240px,30vw,300px);scroll-snap-align:start;cursor:pointer;border:1px solid #1A1A1A;">
-          <img class="tr-img" src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=400&q=80" alt="Coach" style="width:100%;height:360px;object-fit:cover;object-position:top;filter:brightness(.8);display:block;" />
-          <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(10,10,10,.95) 0%,transparent 80%);padding:1.4rem;">
-            <div style="font-family:'Barlow Condensed',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:#E8000E;margin-bottom:.25rem;">MMA &amp; Boxing</div>
-            <div style="font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:.03em;text-transform:uppercase;line-height:1;margin-bottom:.7rem;">Rico Vega</div>
-            <div class="tr-socials" style="display:flex;gap:.6rem;opacity:0;transform:translateY(10px);">
-              <a href="#" class="tr-soc" style="width:30px;height:30px;border:1px solid rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;font-size:.78rem;color:#F5F5F5;text-decoration:none;"><i class="fab fa-instagram"></i></a>
-              <a href="#" class="tr-soc" style="width:30px;height:30px;border:1px solid rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;font-size:.78rem;color:#F5F5F5;text-decoration:none;"><i class="fab fa-youtube"></i></a>
-            </div>
-          </div>
+        <div class="coachCard" style="flex:0 0 33.33%;padding:20px;box-sizing:border-box;text-align:center">
+          <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=500"
+            style="width:100%;height:300px;object-fit:cover;border-radius:6px;margin-bottom:12px">
+          <h3 style="margin:6px 0;font-size:20px">Rico Vega</h3>
+          <p style="color:#E8000E;font-size:13px;letter-spacing:1px">MMA Coach</p>
+          <p style="font-size:14px;color:#aaa">Former fighter with 15+ years experience.</p>
         </div>
 
-        <div class="trainer-card" style="flex:0 0 clamp(240px,30vw,300px);scroll-snap-align:start;cursor:pointer;border:1px solid #1A1A1A;">
-          <img class="tr-img" src="https://images.unsplash.com/photo-1616803689943-5601631c7fec?w=400&q=80" alt="Coach" style="width:100%;height:360px;object-fit:cover;object-position:top;filter:brightness(.8);display:block;" />
-          <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(10,10,10,.95) 0%,transparent 80%);padding:1.4rem;">
-            <div style="font-family:'Barlow Condensed',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:#E8000E;margin-bottom:.25rem;">Yoga &amp; Mobility</div>
-            <div style="font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:.03em;text-transform:uppercase;line-height:1;margin-bottom:.7rem;">Zara Lotus</div>
-            <div class="tr-socials" style="display:flex;gap:.6rem;opacity:0;transform:translateY(10px);">
-              <a href="#" class="tr-soc" style="width:30px;height:30px;border:1px solid rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;font-size:.78rem;color:#F5F5F5;text-decoration:none;"><i class="fab fa-instagram"></i></a>
-              <a href="#" class="tr-soc" style="width:30px;height:30px;border:1px solid rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;font-size:.78rem;color:#F5F5F5;text-decoration:none;"><i class="fab fa-pinterest"></i></a>
-            </div>
-          </div>
+        <div class="coachCard" style="flex:0 0 33.33%;padding:20px;box-sizing:border-box;text-align:center">
+          <img src="https://images.unsplash.com/photo-1599058917765-a780eda07a3e?w=500"
+            style="width:100%;height:300px;object-fit:cover;border-radius:6px;margin-bottom:12px">
+          <h3 style="margin:6px 0;font-size:20px">David Knox</h3>
+          <p style="color:#E8000E;font-size:13px;letter-spacing:1px">Bodybuilding Coach</p>
+          <p style="font-size:14px;color:#aaa">Muscle hypertrophy specialist.</p>
         </div>
 
-        <div class="trainer-card" style="flex:0 0 clamp(240px,30vw,300px);scroll-snap-align:start;cursor:pointer;border:1px solid #1A1A1A;">
-          <img class="tr-img" src="https://images.unsplash.com/photo-1567013127542-490d757e51fc?w=400&q=80" alt="Coach" style="width:100%;height:360px;object-fit:cover;object-position:top;filter:brightness(.8);display:block;" />
-          <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(10,10,10,.95) 0%,transparent 80%);padding:1.4rem;">
-            <div style="font-family:'Barlow Condensed',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:#E8000E;margin-bottom:.25rem;">Nutrition Expert</div>
-            <div style="font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:.03em;text-transform:uppercase;line-height:1;margin-bottom:.7rem;">Jake Forge</div>
-            <div class="tr-socials" style="display:flex;gap:.6rem;opacity:0;transform:translateY(10px);">
-              <a href="#" class="tr-soc" style="width:30px;height:30px;border:1px solid rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;font-size:.78rem;color:#F5F5F5;text-decoration:none;"><i class="fab fa-instagram"></i></a>
-              <a href="#" class="tr-soc" style="width:30px;height:30px;border:1px solid rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;font-size:.78rem;color:#F5F5F5;text-decoration:none;"><i class="fab fa-linkedin"></i></a>
-            </div>
-          </div>
-        </div>
-
-        <div class="trainer-card" style="flex:0 0 clamp(240px,30vw,300px);scroll-snap-align:start;cursor:pointer;border:1px solid #1A1A1A;">
-          <img class="tr-img" src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=400&q=80" alt="Coach" style="width:100%;height:360px;object-fit:cover;object-position:top;filter:brightness(.8);display:block;" />
-          <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(10,10,10,.95) 0%,transparent 80%);padding:1.4rem;">
-            <div style="font-family:'Barlow Condensed',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:#E8000E;margin-bottom:.25rem;">Cardio Specialist</div>
-            <div style="font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:.03em;text-transform:uppercase;line-height:1;margin-bottom:.7rem;">Lena Cross</div>
-            <div class="tr-socials" style="display:flex;gap:.6rem;opacity:0;transform:translateY(10px);">
-              <a href="#" class="tr-soc" style="width:30px;height:30px;border:1px solid rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;font-size:.78rem;color:#F5F5F5;text-decoration:none;"><i class="fab fa-instagram"></i></a>
-              <a href="#" class="tr-soc" style="width:30px;height:30px;border:1px solid rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;font-size:.78rem;color:#F5F5F5;text-decoration:none;"><i class="fab fa-strava"></i></a>
-            </div>
-          </div>
+        <div class="coachCard" style="flex:0 0 33.33%;padding:20px;box-sizing:border-box;text-align:center">
+          <img src="https://images.unsplash.com/photo-1594381898411-846e7d193883?w=500"
+            style="width:100%;height:300px;object-fit:cover;border-radius:6px;margin-bottom:12px">
+          <h3 style="margin:6px 0;font-size:20px">Sara Titan</h3>
+          <p style="color:#E8000E;font-size:13px;letter-spacing:1px">Functional Trainer</p>
+          <p style="font-size:14px;color:#aaa">Mobility & endurance coach.</p>
         </div>
 
       </div>
 
-      <div style="display:flex;justify-content:center;gap:1rem;margin-top:2rem;">
-        <button id="trPrev" style="width:48px;height:48px;border:2px solid #333;background:transparent;color:#F5F5F5;cursor:pointer;font-size:1rem;transition:all .3s;"
-          onmouseover="this.style.borderColor='#E8000E';this.style.background='#E8000E';"
-          onmouseout="this.style.borderColor='#333';this.style.background='transparent';"><i class="fas fa-arrow-left"></i></button>
-        <button id="trNext" style="width:48px;height:48px;border:2px solid #333;background:transparent;color:#F5F5F5;cursor:pointer;font-size:1rem;transition:all .3s;"
-          onmouseover="this.style.borderColor='#E8000E';this.style.background='#E8000E';"
-          onmouseout="this.style.borderColor='#333';this.style.background='transparent';"><i class="fas fa-arrow-right"></i></button>
-      </div>
+
+      <button id="prevCoach"
+        style="position:absolute;top:50%;left:10px;transform:translateY(-50%);width:45px;height:45px;background:#111;border:1px solid #333;color:white;font-size:20px;cursor:pointer">❮</button>
+
+      <button id="nextCoach"
+        style="position:absolute;top:50%;right:10px;transform:translateY(-50%);width:45px;height:45px;background:#111;border:1px solid #333;color:white;font-size:20px;cursor:pointer">❯</button>
+
     </div>
   </section>
 
+
   <script>
-    /* ── TRAINER SLIDER ── */
-    (function () {
-      const slider  = document.getElementById('trSlider');
-      const prevBtn = document.getElementById('trPrev');
-      const nextBtn = document.getElementById('trNext');
-      if (!slider || !prevBtn || !nextBtn) return;
 
-      const CARD_W = 300 + 29; // card width + gap
+    const track = document.getElementById("coachTrack")
+    const cards = document.querySelectorAll(".coachCard")
 
-      nextBtn.addEventListener('click', () => slider.scrollBy({ left: CARD_W,  behavior: 'smooth' }));
-      prevBtn.addEventListener('click', () => slider.scrollBy({ left: -CARD_W, behavior: 'smooth' }));
+    const next = document.getElementById("nextCoach")
+    const prev = document.getElementById("prevCoach")
 
-      /* drag-to-scroll */
-      let isDown = false, startX = 0, scrollLeft = 0;
-      slider.addEventListener('mousedown', e => { isDown = true; slider.style.cursor = 'grabbing'; startX = e.pageX - slider.offsetLeft; scrollLeft = slider.scrollLeft; });
-      slider.addEventListener('mouseleave', () => { isDown = false; slider.style.cursor = ''; });
-      slider.addEventListener('mouseup',    () => { isDown = false; slider.style.cursor = ''; });
-      slider.addEventListener('mousemove',  e => {
-        if (!isDown) return;
-        e.preventDefault();
-        slider.scrollLeft = scrollLeft - (e.pageX - slider.offsetLeft - startX) * 1.5;
-      });
+    let auto = true
+    let index = 0
 
-      /* touch */
-      let tStartX = 0, tScrollLeft = 0;
-      slider.addEventListener('touchstart', e => { tStartX = e.touches[0].clientX; tScrollLeft = slider.scrollLeft; }, { passive:true });
-      slider.addEventListener('touchmove',  e => { slider.scrollLeft = tScrollLeft + (tStartX - e.touches[0].clientX); }, { passive:true });
-    })();
+    function visibleCards() {
 
-    /* ── TRAINER CARD SPOTLIGHT ── */
-    document.querySelectorAll('.trainer-card').forEach(card => {
-      card.addEventListener('mousemove', e => {
-        const r = card.getBoundingClientRect();
-        card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
-        card.style.setProperty('--my', (e.clientY - r.top)  + 'px');
-      });
-    });
+      if (window.innerWidth < 600) return 1
+      if (window.innerWidth < 900) return 2
+      return 3
+
+    }
+
+    function setCardWidth() {
+
+      let show = visibleCards()
+
+      document.querySelectorAll(".coachCard").forEach(card => {
+        card.style.flex = "0 0 " + (100 / show) + "%"
+      })
+
+    }
+
+    setCardWidth()
+    window.addEventListener("resize", setCardWidth)
+
+    function slide() {
+
+      const cardWidth = cards[0].offsetWidth
+
+      track.style.transform = "translateX(-" + (index * cardWidth) + "px)"
+
+    }
+
+    function autoSlide() {
+
+      if (!auto) return
+
+      index++
+
+      if (index > cards.length - visibleCards()) {
+        index = 0
+      }
+
+      slide()
+
+    }
+
+    let interval = setInterval(autoSlide, 3000)
+
+    next.onclick = () => {
+
+      auto = false
+      clearInterval(interval)
+
+      index++
+
+      if (index > cards.length - visibleCards()) {
+        index = 0
+      }
+
+      slide()
+
+    }
+
+    prev.onclick = () => {
+
+      auto = false
+      clearInterval(interval)
+
+      index--
+
+      if (index < 0) {
+        index = cards.length - visibleCards()
+      }
+
+      slide()
+
+    }
+
   </script>
-
   <!-- ═══════════════════════════════════════
      MEMBERSHIP
   ═══════════════════════════════════════ -->
   <section id="membership" style="padding:7rem 5%;background:#0A0A0A;position:relative;z-index:2;overflow:hidden;">
     <div style="max-width:1100px;margin:0 auto;">
       <div style="text-align:center;margin-bottom:3rem;">
-        <div class="reveal" style="font-family:'Barlow Condensed',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.35em;text-transform:uppercase;color:#E8000E;display:inline-flex;align-items:center;gap:10px;margin-bottom:.9rem;">Pricing</div>
-        <h2 class="reveal rd1" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,5vw,4.8rem);line-height:.93;letter-spacing:.03em;text-transform:uppercase;">
+        <div class="reveal"
+          style="font-family:'Barlow Condensed',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.35em;text-transform:uppercase;color:#E8000E;display:inline-flex;align-items:center;gap:10px;margin-bottom:.9rem;">
+          Pricing</div>
+        <h2 class="reveal rd1"
+          style="font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,5vw,4.8rem);line-height:.93;letter-spacing:.03em;text-transform:uppercase;">
           MEMBERSHIP <span style="color:#E8000E;">PLANS</span>
         </h2>
-        <p class="reveal rd2" style="max-width:520px;margin:1.2rem auto 0;font-size:.9rem;font-weight:300;line-height:1.85;color:#666;">No hidden fees. No contracts. Cancel anytime.</p>
+        <p class="reveal rd2"
+          style="max-width:520px;margin:1.2rem auto 0;font-size:.9rem;font-weight:300;line-height:1.85;color:#666;">No
+          hidden fees. No contracts. Cancel anytime.</p>
       </div>
 
       <!-- Toggle -->
-      <div class="reveal" style="display:flex;align-items:center;justify-content:center;gap:1rem;margin-bottom:3.5rem;flex-wrap:wrap;">
-        <span class="bl-lbl active" id="lblM" style="font-family:'Barlow Condensed',sans-serif;font-size:.82rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#888;">Monthly</span>
-        <div class="tog-sw" id="togSw" style="width:50px;height:25px;background:#222;border-radius:13px;position:relative;cursor:pointer;border:1px solid #333;">
-          <div class="tog-knob" style="position:absolute;top:3px;left:3px;width:17px;height:17px;background:#F5F5F5;border-radius:50%;"></div>
+      <div class="reveal"
+        style="display:flex;align-items:center;justify-content:center;gap:1rem;margin-bottom:3.5rem;flex-wrap:wrap;">
+        <span class="bl-lbl active" id="lblM"
+          style="font-family:'Barlow Condensed',sans-serif;font-size:.82rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#888;">Monthly</span>
+        <div class="tog-sw" id="togSw"
+          style="width:50px;height:25px;background:#222;border-radius:13px;position:relative;cursor:pointer;border:1px solid #333;">
+          <div class="tog-knob"
+            style="position:absolute;top:3px;left:3px;width:17px;height:17px;background:#F5F5F5;border-radius:50%;">
+          </div>
         </div>
-        <span class="bl-lbl" id="lblA" style="font-family:'Barlow Condensed',sans-serif;font-size:.82rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#888;">
-          Annual <span style="background:rgba(232,0,14,.15);color:#E8000E;font-size:.65rem;padding:3px 7px;border-radius:2px;letter-spacing:.12em;">SAVE 20%</span>
+        <span class="bl-lbl" id="lblA"
+          style="font-family:'Barlow Condensed',sans-serif;font-size:.82rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#888;">
+          Annual <span
+            style="background:rgba(232,0,14,.15);color:#E8000E;font-size:.65rem;padding:3px 7px;border-radius:2px;letter-spacing:.12em;">SAVE
+            20%</span>
         </span>
       </div>
 
       <div class="plans-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;">
 
         <!-- Starter -->
-        <div class="plan-card reveal" style="background:#111;border:1px solid #1A1A1A;padding:2.8rem 2.2rem;position:relative;overflow:hidden;">
+        <div class="plan-card reveal"
+          style="background:#111;border:1px solid #1A1A1A;padding:2.8rem 2.2rem;position:relative;overflow:hidden;">
           <div style="position:absolute;top:0;left:0;width:100%;height:3px;background:#1A1A1A;"></div>
-          <div style="font-family:'Bebas Neue',sans-serif;font-size:1.9rem;letter-spacing:.05em;text-transform:uppercase;color:#F5F5F5;margin-bottom:.2rem;">Starter</div>
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;color:#555;margin-bottom:1.8rem;">Get the basics right</div>
-          <div style="display:flex;align-items:flex-start;gap:3px;margin-bottom:1.8rem;padding-bottom:1.8rem;border-bottom:1px solid #1A1A1A;">
-            <span style="font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;font-weight:700;color:#E8000E;margin-top:8px;">₹</span>
-            <span id="ps" style="font-family:'Bebas Neue',sans-serif;font-size:4.2rem;line-height:1;color:#F5F5F5;">249</span>
-            <span style="font-family:'Barlow Condensed',sans-serif;font-size:.8rem;color:#555;align-self:flex-end;margin-bottom:7px;">/mo</span>
+          <div
+            style="font-family:'Bebas Neue',sans-serif;font-size:1.9rem;letter-spacing:.05em;text-transform:uppercase;color:#F5F5F5;margin-bottom:.2rem;">
+            Starter</div>
+          <div
+            style="font-family:'Barlow Condensed',sans-serif;font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;color:#555;margin-bottom:1.8rem;">
+            Get the basics right</div>
+          <div
+            style="display:flex;align-items:flex-start;gap:3px;margin-bottom:1.8rem;padding-bottom:1.8rem;border-bottom:1px solid #1A1A1A;">
+            <span
+              style="font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;font-weight:700;color:#E8000E;margin-top:8px;">₹</span>
+            <span id="ps"
+              style="font-family:'Bebas Neue',sans-serif;font-size:4.2rem;line-height:1;color:#F5F5F5;">249</span>
+            <span
+              style="font-family:'Barlow Condensed',sans-serif;font-size:.8rem;color:#555;align-self:flex-end;margin-bottom:7px;">/mo</span>
           </div>
           <ul style="list-style:none;display:flex;flex-direction:column;gap:.75rem;margin-bottom:2.2rem;">
-            <li style="display:flex;align-items:center;gap:10px;font-size:.88rem;color:#CCC;"><i class="fas fa-check" style="color:#E8000E;font-size:.8rem;width:14px;"></i>Gym Floor Access</li>
-            <li style="display:flex;align-items:center;gap:10px;font-size:.88rem;color:#CCC;"><i class="fas fa-check" style="color:#E8000E;font-size:.8rem;width:14px;"></i>Locker Room</li>
-            <li style="display:flex;align-items:center;gap:10px;font-size:.88rem;color:#CCC;"><i class="fas fa-check" style="color:#E8000E;font-size:.8rem;width:14px;"></i>Member App</li>
-            <li style="display:flex;align-items:center;gap:10px;font-size:.88rem;color:#CCC;"><i class="fas fa-check" style="color:#E8000E;font-size:.8rem;width:14px;"></i>2 Group Classes/Week</li>
-            <li style="display:flex;align-items:center;gap:10px;font-size:.88rem;color:#444;text-decoration:line-through;opacity:.5;"><i class="fas fa-times" style="color:#444;font-size:.8rem;width:14px;"></i>Personal Training</li>
-            <li style="display:flex;align-items:center;gap:10px;font-size:.88rem;color:#444;text-decoration:line-through;opacity:.5;"><i class="fas fa-times" style="color:#444;font-size:.8rem;width:14px;"></i>24/7 Access</li>
+            <li style="display:flex;align-items:center;gap:10px;font-size:.88rem;color:#CCC;"><i class="fas fa-check"
+                style="color:#E8000E;font-size:.8rem;width:14px;"></i>Gym Floor Access</li>
+            <li style="display:flex;align-items:center;gap:10px;font-size:.88rem;color:#CCC;"><i class="fas fa-check"
+                style="color:#E8000E;font-size:.8rem;width:14px;"></i>Locker Room</li>
+            <li style="display:flex;align-items:center;gap:10px;font-size:.88rem;color:#CCC;"><i class="fas fa-check"
+                style="color:#E8000E;font-size:.8rem;width:14px;"></i>Member App</li>
+            <li style="display:flex;align-items:center;gap:10px;font-size:.88rem;color:#CCC;"><i class="fas fa-check"
+                style="color:#E8000E;font-size:.8rem;width:14px;"></i>2 Group Classes/Week</li>
+            <li
+              style="display:flex;align-items:center;gap:10px;font-size:.88rem;color:#444;text-decoration:line-through;opacity:.5;">
+              <i class="fas fa-times" style="color:#444;font-size:.8rem;width:14px;"></i>Personal Training
+            </li>
+            <li
+              style="display:flex;align-items:center;gap:10px;font-size:.88rem;color:#444;text-decoration:line-through;opacity:.5;">
+              <i class="fas fa-times" style="color:#444;font-size:.8rem;width:14px;"></i>24/7 Access
+            </li>
           </ul>
           <button class="plan-fill" onclick="buyPlan('Starter', document.getElementById('ps').textContent)"
             style="width:100%;font-family:'Barlow Condensed',sans-serif;font-size:.88rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:14px;border:2px solid #E8000E;background:transparent;color:#E8000E;cursor:pointer;clip-path:polygon(6px 0%,100% 0%,calc(100% - 6px) 100%,0% 100%);">
@@ -893,23 +1740,40 @@
         </div>
 
         <!-- Elite (featured) -->
-        <div class="plan-card plan-featured reveal rd1" style="background:linear-gradient(135deg,#1A1A1A 0%,rgba(232,0,14,.08) 100%);border:1px solid #E8000E;padding:2.8rem 2.2rem;position:relative;overflow:hidden;">
+        <div class="plan-card plan-featured reveal rd1"
+          style="background:linear-gradient(135deg,#1A1A1A 0%,rgba(232,0,14,.08) 100%);border:1px solid #E8000E;padding:2.8rem 2.2rem;position:relative;overflow:hidden;">
           <div style="position:absolute;top:0;left:0;width:100%;height:3px;background:#E8000E;"></div>
-          <div style="position:absolute;top:1.2rem;right:1.2rem;font-family:'Barlow Condensed',sans-serif;font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;background:#E8000E;color:#fff;padding:4px 9px;">Most Popular</div>
-          <div style="font-family:'Bebas Neue',sans-serif;font-size:1.9rem;letter-spacing:.05em;text-transform:uppercase;color:#F5F5F5;margin-bottom:.2rem;">Elite</div>
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;color:#555;margin-bottom:1.8rem;">The complete package</div>
-          <div style="display:flex;align-items:flex-start;gap:3px;margin-bottom:1.8rem;padding-bottom:1.8rem;border-bottom:1px solid #333;">
-            <span style="font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;font-weight:700;color:#E8000E;margin-top:8px;">₹</span>
-            <span id="pe" style="font-family:'Bebas Neue',sans-serif;font-size:4.2rem;line-height:1;color:#F5F5F5;">499</span>
-            <span style="font-family:'Barlow Condensed',sans-serif;font-size:.8rem;color:#555;align-self:flex-end;margin-bottom:7px;">/mo</span>
+          <div
+            style="position:absolute;top:1.2rem;right:1.2rem;font-family:'Barlow Condensed',sans-serif;font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;background:#E8000E;color:#fff;padding:4px 9px;">
+            Most Popular</div>
+          <div
+            style="font-family:'Bebas Neue',sans-serif;font-size:1.9rem;letter-spacing:.05em;text-transform:uppercase;color:#F5F5F5;margin-bottom:.2rem;">
+            Elite</div>
+          <div
+            style="font-family:'Barlow Condensed',sans-serif;font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;color:#555;margin-bottom:1.8rem;">
+            The complete package</div>
+          <div
+            style="display:flex;align-items:flex-start;gap:3px;margin-bottom:1.8rem;padding-bottom:1.8rem;border-bottom:1px solid #333;">
+            <span
+              style="font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;font-weight:700;color:#E8000E;margin-top:8px;">₹</span>
+            <span id="pe"
+              style="font-family:'Bebas Neue',sans-serif;font-size:4.2rem;line-height:1;color:#F5F5F5;">499</span>
+            <span
+              style="font-family:'Barlow Condensed',sans-serif;font-size:.8rem;color:#555;align-self:flex-end;margin-bottom:7px;">/mo</span>
           </div>
           <ul style="list-style:none;display:flex;flex-direction:column;gap:.75rem;margin-bottom:2.2rem;">
-            <li style="display:flex;align-items:center;gap:10px;font-size:.88rem;color:#CCC;"><i class="fas fa-check" style="color:#E8000E;font-size:.8rem;width:14px;"></i>Full Gym Access</li>
-            <li style="display:flex;align-items:center;gap:10px;font-size:.88rem;color:#CCC;"><i class="fas fa-check" style="color:#E8000E;font-size:.8rem;width:14px;"></i>Locker + Towel Service</li>
-            <li style="display:flex;align-items:center;gap:10px;font-size:.88rem;color:#CCC;"><i class="fas fa-check" style="color:#E8000E;font-size:.8rem;width:14px;"></i>Unlimited Group Classes</li>
-            <li style="display:flex;align-items:center;gap:10px;font-size:.88rem;color:#CCC;"><i class="fas fa-check" style="color:#E8000E;font-size:.8rem;width:14px;"></i>4 PT Sessions/Month</li>
-            <li style="display:flex;align-items:center;gap:10px;font-size:.88rem;color:#CCC;"><i class="fas fa-check" style="color:#E8000E;font-size:.8rem;width:14px;"></i>Nutrition Coaching</li>
-            <li style="display:flex;align-items:center;gap:10px;font-size:.88rem;color:#CCC;"><i class="fas fa-check" style="color:#E8000E;font-size:.8rem;width:14px;"></i>MMA Zone Access</li>
+            <li style="display:flex;align-items:center;gap:10px;font-size:.88rem;color:#CCC;"><i class="fas fa-check"
+                style="color:#E8000E;font-size:.8rem;width:14px;"></i>Full Gym Access</li>
+            <li style="display:flex;align-items:center;gap:10px;font-size:.88rem;color:#CCC;"><i class="fas fa-check"
+                style="color:#E8000E;font-size:.8rem;width:14px;"></i>Locker + Towel Service</li>
+            <li style="display:flex;align-items:center;gap:10px;font-size:.88rem;color:#CCC;"><i class="fas fa-check"
+                style="color:#E8000E;font-size:.8rem;width:14px;"></i>Unlimited Group Classes</li>
+            <li style="display:flex;align-items:center;gap:10px;font-size:.88rem;color:#CCC;"><i class="fas fa-check"
+                style="color:#E8000E;font-size:.8rem;width:14px;"></i>4 PT Sessions/Month</li>
+            <li style="display:flex;align-items:center;gap:10px;font-size:.88rem;color:#CCC;"><i class="fas fa-check"
+                style="color:#E8000E;font-size:.8rem;width:14px;"></i>Nutrition Coaching</li>
+            <li style="display:flex;align-items:center;gap:10px;font-size:.88rem;color:#CCC;"><i class="fas fa-check"
+                style="color:#E8000E;font-size:.8rem;width:14px;"></i>MMA Zone Access</li>
           </ul>
           <button class="plan-fill-w" onclick="buyPlan('Elite', document.getElementById('pe').textContent)"
             style="width:100%;font-family:'Barlow Condensed',sans-serif;font-size:.88rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:14px;border:2px solid #E8000E;background:#E8000E;color:#fff;cursor:pointer;clip-path:polygon(6px 0%,100% 0%,calc(100% - 6px) 100%,0% 100%);">
@@ -918,22 +1782,37 @@
         </div>
 
         <!-- Legend -->
-        <div class="plan-card reveal rd2" style="background:#111;border:1px solid #1A1A1A;padding:2.8rem 2.2rem;position:relative;overflow:hidden;">
+        <div class="plan-card reveal rd2"
+          style="background:#111;border:1px solid #1A1A1A;padding:2.8rem 2.2rem;position:relative;overflow:hidden;">
           <div style="position:absolute;top:0;left:0;width:100%;height:3px;background:#1A1A1A;"></div>
-          <div style="font-family:'Bebas Neue',sans-serif;font-size:1.9rem;letter-spacing:.05em;text-transform:uppercase;color:#F5F5F5;margin-bottom:.2rem;">Legend</div>
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;color:#555;margin-bottom:1.8rem;">No limits. No excuses.</div>
-          <div style="display:flex;align-items:flex-start;gap:3px;margin-bottom:1.8rem;padding-bottom:1.8rem;border-bottom:1px solid #1A1A1A;">
-            <span style="font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;font-weight:700;color:#E8000E;margin-top:8px;">₹</span>
-            <span id="pl" style="font-family:'Bebas Neue',sans-serif;font-size:4.2rem;line-height:1;color:#F5F5F5;">999</span>
-            <span style="font-family:'Barlow Condensed',sans-serif;font-size:.8rem;color:#555;align-self:flex-end;margin-bottom:7px;">/mo</span>
+          <div
+            style="font-family:'Bebas Neue',sans-serif;font-size:1.9rem;letter-spacing:.05em;text-transform:uppercase;color:#F5F5F5;margin-bottom:.2rem;">
+            Legend</div>
+          <div
+            style="font-family:'Barlow Condensed',sans-serif;font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;color:#555;margin-bottom:1.8rem;">
+            No limits. No excuses.</div>
+          <div
+            style="display:flex;align-items:flex-start;gap:3px;margin-bottom:1.8rem;padding-bottom:1.8rem;border-bottom:1px solid #1A1A1A;">
+            <span
+              style="font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;font-weight:700;color:#E8000E;margin-top:8px;">₹</span>
+            <span id="pl"
+              style="font-family:'Bebas Neue',sans-serif;font-size:4.2rem;line-height:1;color:#F5F5F5;">999</span>
+            <span
+              style="font-family:'Barlow Condensed',sans-serif;font-size:.8rem;color:#555;align-self:flex-end;margin-bottom:7px;">/mo</span>
           </div>
           <ul style="list-style:none;display:flex;flex-direction:column;gap:.75rem;margin-bottom:2.2rem;">
-            <li style="display:flex;align-items:center;gap:10px;font-size:.88rem;color:#CCC;"><i class="fas fa-check" style="color:#E8000E;font-size:.8rem;width:14px;"></i>24/7 Full Gym Access</li>
-            <li style="display:flex;align-items:center;gap:10px;font-size:.88rem;color:#CCC;"><i class="fas fa-check" style="color:#E8000E;font-size:.8rem;width:14px;"></i>Premium Locker + Spa</li>
-            <li style="display:flex;align-items:center;gap:10px;font-size:.88rem;color:#CCC;"><i class="fas fa-check" style="color:#E8000E;font-size:.8rem;width:14px;"></i>Unlimited All Classes</li>
-            <li style="display:flex;align-items:center;gap:10px;font-size:.88rem;color:#CCC;"><i class="fas fa-check" style="color:#E8000E;font-size:.8rem;width:14px;"></i>Unlimited PT Sessions</li>
-            <li style="display:flex;align-items:center;gap:10px;font-size:.88rem;color:#CCC;"><i class="fas fa-check" style="color:#E8000E;font-size:.8rem;width:14px;"></i>Custom Nutrition Plan</li>
-            <li style="display:flex;align-items:center;gap:10px;font-size:.88rem;color:#CCC;"><i class="fas fa-check" style="color:#E8000E;font-size:.8rem;width:14px;"></i>Guest Passes (4/mo)</li>
+            <li style="display:flex;align-items:center;gap:10px;font-size:.88rem;color:#CCC;"><i class="fas fa-check"
+                style="color:#E8000E;font-size:.8rem;width:14px;"></i>24/7 Full Gym Access</li>
+            <li style="display:flex;align-items:center;gap:10px;font-size:.88rem;color:#CCC;"><i class="fas fa-check"
+                style="color:#E8000E;font-size:.8rem;width:14px;"></i>Premium Locker + Spa</li>
+            <li style="display:flex;align-items:center;gap:10px;font-size:.88rem;color:#CCC;"><i class="fas fa-check"
+                style="color:#E8000E;font-size:.8rem;width:14px;"></i>Unlimited All Classes</li>
+            <li style="display:flex;align-items:center;gap:10px;font-size:.88rem;color:#CCC;"><i class="fas fa-check"
+                style="color:#E8000E;font-size:.8rem;width:14px;"></i>Unlimited PT Sessions</li>
+            <li style="display:flex;align-items:center;gap:10px;font-size:.88rem;color:#CCC;"><i class="fas fa-check"
+                style="color:#E8000E;font-size:.8rem;width:14px;"></i>Custom Nutrition Plan</li>
+            <li style="display:flex;align-items:center;gap:10px;font-size:.88rem;color:#CCC;"><i class="fas fa-check"
+                style="color:#E8000E;font-size:.8rem;width:14px;"></i>Guest Passes (4/mo)</li>
           </ul>
           <button class="plan-fill" onclick="buyPlan('Legend', document.getElementById('pl').textContent)"
             style="width:100%;font-family:'Barlow Condensed',sans-serif;font-size:.88rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:14px;border:2px solid #E8000E;background:transparent;color:#E8000E;cursor:pointer;clip-path:polygon(6px 0%,100% 0%,calc(100% - 6px) 100%,0% 100%);">
@@ -949,13 +1828,13 @@
     /* ── BILLING TOGGLE + WHATSAPP PURCHASE ── */
     (function () {
       const toggle = document.getElementById('togSw');
-      const lblM   = document.getElementById('lblM');
-      const lblA   = document.getElementById('lblA');
+      const lblM = document.getElementById('lblM');
+      const lblA = document.getElementById('lblA');
       if (!toggle) return;
 
       const prices = {
-        monthly: { starter: 249, elite: 499,  legend: 999 },
-        annual:  { starter: 199, elite: 399,  legend: 799 }
+        monthly: { starter: 249, elite: 499, legend: 999 },
+        annual: { starter: 199, elite: 399, legend: 799 }
       };
       let isAnnual = false;
 
@@ -974,9 +1853,9 @@
         isAnnual = !isAnnual;
         toggle.classList.toggle('on', isAnnual);
         lblM.classList.toggle('active', !isAnnual);
-        lblA.classList.toggle('active',  isAnnual);
+        lblA.classList.toggle('active', isAnnual);
         const set = isAnnual ? prices.annual : prices.monthly;
-        ['ps','pe','pl'].forEach((id, i) => {
+        ['ps', 'pe', 'pl'].forEach((id, i) => {
           const el = document.getElementById(id);
           if (el) animatePrice(el, parseInt(el.textContent), [set.starter, set.elite, set.legend][i]);
         });
@@ -1006,14 +1885,14 @@
     document.querySelectorAll('.plan-card').forEach(card => {
       card.addEventListener('mousemove', e => {
         const r = card.getBoundingClientRect();
-        const rotX = ((e.clientY - r.top  - r.height / 2) / r.height / 2) * -5;
-        const rotY = ((e.clientX - r.left - r.width  / 2) / r.width  / 2) *  5;
-        card.style.transform    = `perspective(900px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-8px)`;
-        card.style.transition   = 'transform .08s ease';
+        const rotX = ((e.clientY - r.top - r.height / 2) / r.height / 2) * -5;
+        const rotY = ((e.clientX - r.left - r.width / 2) / r.width / 2) * 5;
+        card.style.transform = `perspective(900px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-8px)`;
+        card.style.transition = 'transform .08s ease';
       });
       card.addEventListener('mouseleave', () => {
         const featured = card.classList.contains('plan-featured');
-        card.style.transform  = featured ? 'translateY(-16px)' : '';
+        card.style.transform = featured ? 'translateY(-16px)' : '';
         card.style.transition = 'transform .4s ease';
       });
     });
@@ -1024,12 +1903,15 @@
   ═══════════════════════════════════════ -->
   <section id="gallery" style="padding:7rem 5%;background:#111;position:relative;z-index:2;">
     <div style="max-width:1200px;margin:0 auto;">
-      <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:2.5rem;flex-wrap:wrap;gap:1rem;">
+      <div
+        style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:2.5rem;flex-wrap:wrap;gap:1rem;">
         <div>
-          <div class="reveal" style="font-family:'Barlow Condensed',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.35em;text-transform:uppercase;color:#E8000E;display:flex;align-items:center;gap:10px;margin-bottom:.9rem;">
+          <div class="reveal"
+            style="font-family:'Barlow Condensed',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.35em;text-transform:uppercase;color:#E8000E;display:flex;align-items:center;gap:10px;margin-bottom:.9rem;">
             <span style="width:28px;height:2px;background:#E8000E;display:inline-block;"></span>Our Space
           </div>
-          <h2 class="reveal rd1" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,5vw,4.8rem);line-height:.93;letter-spacing:.03em;text-transform:uppercase;">
+          <h2 class="reveal rd1"
+            style="font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,5vw,4.8rem);line-height:.93;letter-spacing:.03em;text-transform:uppercase;">
             INSIDE <span style="color:#E8000E;">IRONFORGE</span>
           </h2>
         </div>
@@ -1039,26 +1921,54 @@
         </a>
       </div>
 
-      <div class="gal-grid" style="display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(2,230px);gap:4px;">
-        <div class="gallery-item gal-large" data-src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1200&q=80" style="overflow:hidden;position:relative;cursor:pointer;grid-column:span 2;grid-row:span 2;">
-          <img class="gal-img" src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1200&q=80" alt="Gym" style="width:100%;height:100%;object-fit:cover;filter:brightness(.7);display:block;" />
-          <div class="gal-overlay" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(232,0,14,.25);opacity:0;"><i class="fas fa-expand" style="font-size:2.2rem;color:#fff;"></i></div>
+      <div class="gal-grid"
+        style="display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(2,230px);gap:4px;">
+        <div class="gallery-item gal-large"
+          data-src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1200&q=80"
+          style="overflow:hidden;position:relative;cursor:pointer;grid-column:span 2;grid-row:span 2;">
+          <img class="gal-img" src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1200&q=80" alt="Gym"
+            style="width:100%;height:100%;object-fit:cover;filter:brightness(.7);display:block;" />
+          <div class="gal-overlay"
+            style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(232,0,14,.25);opacity:0;">
+            <i class="fas fa-expand" style="font-size:2.2rem;color:#fff;"></i>
+          </div>
         </div>
-        <div class="gallery-item" data-src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?w=800&q=80" style="overflow:hidden;position:relative;cursor:pointer;">
-          <img class="gal-img" src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?w=800&q=80" alt="Gym" style="width:100%;height:100%;object-fit:cover;filter:brightness(.7);display:block;" />
-          <div class="gal-overlay" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(232,0,14,.25);opacity:0;"><i class="fas fa-expand" style="font-size:2.2rem;color:#fff;"></i></div>
+        <div class="gallery-item" data-src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?w=800&q=80"
+          style="overflow:hidden;position:relative;cursor:pointer;">
+          <img class="gal-img" src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?w=800&q=80" alt="Gym"
+            style="width:100%;height:100%;object-fit:cover;filter:brightness(.7);display:block;" />
+          <div class="gal-overlay"
+            style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(232,0,14,.25);opacity:0;">
+            <i class="fas fa-expand" style="font-size:2.2rem;color:#fff;"></i>
+          </div>
         </div>
-        <div class="gallery-item" data-src="https://images.unsplash.com/photo-1521804906057-1df8fdb718b7?w=800&q=80" style="overflow:hidden;position:relative;cursor:pointer;">
-          <img class="gal-img" src="https://images.unsplash.com/photo-1521804906057-1df8fdb718b7?w=800&q=80" alt="Gym" style="width:100%;height:100%;object-fit:cover;filter:brightness(.7);display:block;" />
-          <div class="gal-overlay" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(232,0,14,.25);opacity:0;"><i class="fas fa-expand" style="font-size:2.2rem;color:#fff;"></i></div>
+        <div class="gallery-item" data-src="https://images.unsplash.com/photo-1521804906057-1df8fdb718b7?w=800&q=80"
+          style="overflow:hidden;position:relative;cursor:pointer;">
+          <img class="gal-img" src="https://images.unsplash.com/photo-1521804906057-1df8fdb718b7?w=800&q=80" alt="Gym"
+            style="width:100%;height:100%;object-fit:cover;filter:brightness(.7);display:block;" />
+          <div class="gal-overlay"
+            style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(232,0,14,.25);opacity:0;">
+            <i class="fas fa-expand" style="font-size:2.2rem;color:#fff;"></i>
+          </div>
         </div>
-        <div class="gallery-item gal-wide" data-src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1000&q=80" style="overflow:hidden;position:relative;cursor:pointer;grid-column:span 2;">
-          <img class="gal-img" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1000&q=80" alt="Gym" style="width:100%;height:100%;object-fit:cover;filter:brightness(.7);display:block;" />
-          <div class="gal-overlay" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(232,0,14,.25);opacity:0;"><i class="fas fa-expand" style="font-size:2.2rem;color:#fff;"></i></div>
+        <div class="gallery-item gal-wide"
+          data-src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1000&q=80"
+          style="overflow:hidden;position:relative;cursor:pointer;grid-column:span 2;">
+          <img class="gal-img" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1000&q=80" alt="Gym"
+            style="width:100%;height:100%;object-fit:cover;filter:brightness(.7);display:block;" />
+          <div class="gal-overlay"
+            style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(232,0,14,.25);opacity:0;">
+            <i class="fas fa-expand" style="font-size:2.2rem;color:#fff;"></i>
+          </div>
         </div>
-        <div class="gallery-item" data-src="https://images.unsplash.com/photo-1593079831268-3381b0db4a77?w=800&q=80" style="overflow:hidden;position:relative;cursor:pointer;">
-          <img class="gal-img" src="https://images.unsplash.com/photo-1593079831268-3381b0db4a77?w=800&q=80" alt="Gym" style="width:100%;height:100%;object-fit:cover;filter:brightness(.7);display:block;" />
-          <div class="gal-overlay" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(232,0,14,.25);opacity:0;"><i class="fas fa-expand" style="font-size:2.2rem;color:#fff;"></i></div>
+        <div class="gallery-item" data-src="https://images.unsplash.com/photo-1593079831268-3381b0db4a77?w=800&q=80"
+          style="overflow:hidden;position:relative;cursor:pointer;">
+          <img class="gal-img" src="https://images.unsplash.com/photo-1593079831268-3381b0db4a77?w=800&q=80" alt="Gym"
+            style="width:100%;height:100%;object-fit:cover;filter:brightness(.7);display:block;" />
+          <div class="gal-overlay"
+            style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(232,0,14,.25);opacity:0;">
+            <i class="fas fa-expand" style="font-size:2.2rem;color:#fff;"></i>
+          </div>
         </div>
       </div>
     </div>
@@ -1067,9 +1977,9 @@
   <script>
     /* ── GALLERY LIGHTBOX ── */
     (function () {
-      const lb     = document.getElementById('lightbox');
-      const lbImg  = document.getElementById('lbImg');
-      const lbClose= document.getElementById('lbClose');
+      const lb = document.getElementById('lightbox');
+      const lbImg = document.getElementById('lbImg');
+      const lbClose = document.getElementById('lbClose');
       if (!lb || !lbImg) return;
 
       document.querySelectorAll('.gallery-item').forEach(item => {
@@ -1097,92 +2007,188 @@
   <!-- ═══════════════════════════════════════
      TESTIMONIALS
   ═══════════════════════════════════════ -->
+
   <section id="testimonials" style="padding:7rem 5%;background:#0A0A0A;overflow:hidden;position:relative;z-index:2;">
+
     <div style="text-align:center;margin-bottom:4rem;">
-      <div class="reveal" style="font-family:'Barlow Condensed',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.35em;text-transform:uppercase;color:#E8000E;display:inline-flex;align-items:center;gap:10px;margin-bottom:.9rem;">Success Stories</div>
-      <h2 class="reveal rd1" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,5vw,4.8rem);line-height:.93;letter-spacing:.03em;text-transform:uppercase;">
+
+      <div
+        style="font-family:'Barlow Condensed',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.35em;text-transform:uppercase;color:#E8000E;margin-bottom:.9rem;">
+        Success Stories</div>
+
+      <h2
+        style="font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,5vw,4.8rem);line-height:.93;letter-spacing:.03em;text-transform:uppercase;">
         WHAT OUR <span style="color:#E8000E;">MEMBERS SAY</span>
       </h2>
+
     </div>
-    <div style="overflow:hidden;padding:.5rem 0;">
-      <div class="testi-track" id="testiTrack" style="display:flex;gap:1.8rem;width:max-content;will-change:transform;">
-        <div class="testi-card" style="width:360px;background:#111;border:1px solid #1A1A1A;padding:2.2rem;flex-shrink:0;">
-          <div style="font-size:2.8rem;color:#E8000E;font-family:Georgia,serif;line-height:1;margin-bottom:.8rem;">"</div>
-          <div style="color:#E8000E;font-size:.8rem;letter-spacing:3px;margin-bottom:1rem;">★★★★★</div>
-          <p style="font-size:.88rem;font-weight:300;line-height:1.85;color:#CCC;margin-bottom:1.8rem;">IronForge completely transformed my body and mindset. Lost 42 lbs in 6 months. The coaches actually care about your progress!</p>
-          <div style="display:flex;align-items:center;gap:.9rem;">
-            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80" alt="" style="width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid #E8000E;flex-shrink:0;display:block;" />
-            <div><div style="font-family:'Barlow Condensed',sans-serif;font-size:.95rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;">James D.</div><div style="font-size:.75rem;color:#555;">Member since 2022</div></div>
-          </div>
-        </div>
-        <div class="testi-card" style="width:360px;background:#111;border:1px solid #1A1A1A;padding:2.2rem;flex-shrink:0;">
-          <div style="font-size:2.8rem;color:#E8000E;font-family:Georgia,serif;line-height:1;margin-bottom:.8rem;">"</div>
-          <div style="color:#E8000E;font-size:.8rem;letter-spacing:3px;margin-bottom:1rem;">★★★★★</div>
-          <p style="font-size:.88rem;font-weight:300;line-height:1.85;color:#CCC;margin-bottom:1.8rem;">The MMA program is world-class. Rico is an incredible coach. I competed in my first amateur fight 8 months after joining.</p>
-          <div style="display:flex;align-items:center;gap:.9rem;">
-            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="" style="width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid #E8000E;flex-shrink:0;display:block;" />
-            <div><div style="font-family:'Barlow Condensed',sans-serif;font-size:.95rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;">Carlos M.</div><div style="font-size:.75rem;color:#555;">Member since 2021</div></div>
-          </div>
-        </div>
-        <div class="testi-card" style="width:360px;background:#111;border:1px solid #1A1A1A;padding:2.2rem;flex-shrink:0;">
-          <div style="font-size:2.8rem;color:#E8000E;font-family:Georgia,serif;line-height:1;margin-bottom:.8rem;">"</div>
-          <div style="color:#E8000E;font-size:.8rem;letter-spacing:3px;margin-bottom:1rem;">★★★★★</div>
-          <p style="font-size:.88rem;font-weight:300;line-height:1.85;color:#CCC;margin-bottom:1.8rem;">As a working mom, 24/7 access with the Legend plan changed everything. I work out at 5AM before anyone wakes up.</p>
-          <div style="display:flex;align-items:center;gap:.9rem;">
-            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80" alt="" style="width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid #E8000E;flex-shrink:0;display:block;" />
-            <div><div style="font-family:'Barlow Condensed',sans-serif;font-size:.95rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;">Sarah K.</div><div style="font-size:.75rem;color:#555;">Member since 2023</div></div>
-          </div>
-        </div>
-        <div class="testi-card" style="width:360px;background:#111;border:1px solid #1A1A1A;padding:2.2rem;flex-shrink:0;">
-          <div style="font-size:2.8rem;color:#E8000E;font-family:Georgia,serif;line-height:1;margin-bottom:.8rem;">"</div>
-          <div style="color:#E8000E;font-size:.8rem;letter-spacing:3px;margin-bottom:1rem;">★★★★★</div>
-          <p style="font-size:.88rem;font-weight:300;line-height:1.85;color:#CCC;margin-bottom:1.8rem;">Tried 5 gyms over the years. Nothing comes close. Equipment is pristine, atmosphere is intense in the best way.</p>
-          <div style="display:flex;align-items:center;gap:.9rem;">
-            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80" alt="" style="width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid #E8000E;flex-shrink:0;display:block;" />
-            <div><div style="font-family:'Barlow Condensed',sans-serif;font-size:.95rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;">Ryan P.</div><div style="font-size:.75rem;color:#555;">Member since 2020</div></div>
-          </div>
-        </div>
-        <div class="testi-card" style="width:360px;background:#111;border:1px solid #1A1A1A;padding:2.2rem;flex-shrink:0;">
-          <div style="font-size:2.8rem;color:#E8000E;font-family:Georgia,serif;line-height:1;margin-bottom:.8rem;">"</div>
-          <div style="color:#E8000E;font-size:.8rem;letter-spacing:3px;margin-bottom:1rem;">★★★★★</div>
-          <p style="font-size:.88rem;font-weight:300;line-height:1.85;color:#CCC;margin-bottom:1.8rem;">Zara's yoga classes helped me recover from a sports injury faster than I thought possible. Game-changer for athletes.</p>
-          <div style="display:flex;align-items:center;gap:.9rem;">
-            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&q=80" alt="" style="width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid #E8000E;flex-shrink:0;display:block;" />
-            <div><div style="font-family:'Barlow Condensed',sans-serif;font-size:.95rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;">Emily T.</div><div style="font-size:.75rem;color:#555;">Member since 2022</div></div>
-          </div>
-        </div>
-        <!-- Duplicate set for seamless loop -->
-        <div class="testi-card" style="width:360px;background:#111;border:1px solid #1A1A1A;padding:2.2rem;flex-shrink:0;">
-          <div style="font-size:2.8rem;color:#E8000E;font-family:Georgia,serif;line-height:1;margin-bottom:.8rem;">"</div>
-          <div style="color:#E8000E;font-size:.8rem;letter-spacing:3px;margin-bottom:1rem;">★★★★★</div>
-          <p style="font-size:.88rem;font-weight:300;line-height:1.85;color:#CCC;margin-bottom:1.8rem;">IronForge completely transformed my body and mindset. Lost 42 lbs in 6 months. The coaches actually care about your progress!</p>
-          <div style="display:flex;align-items:center;gap:.9rem;">
-            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80" alt="" style="width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid #E8000E;flex-shrink:0;display:block;" />
-            <div><div style="font-family:'Barlow Condensed',sans-serif;font-size:.95rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;">James D.</div><div style="font-size:.75rem;color:#555;">Member since 2022</div></div>
-          </div>
-        </div>
-        <div class="testi-card" style="width:360px;background:#111;border:1px solid #1A1A1A;padding:2.2rem;flex-shrink:0;">
-          <div style="font-size:2.8rem;color:#E8000E;font-family:Georgia,serif;line-height:1;margin-bottom:.8rem;">"</div>
-          <div style="color:#E8000E;font-size:.8rem;letter-spacing:3px;margin-bottom:1rem;">★★★★★</div>
-          <p style="font-size:.88rem;font-weight:300;line-height:1.85;color:#CCC;margin-bottom:1.8rem;">The MMA program is world-class. Rico is an incredible coach. I competed in my first amateur fight 8 months after joining.</p>
-          <div style="display:flex;align-items:center;gap:.9rem;">
-            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="" style="width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid #E8000E;flex-shrink:0;display:block;" />
-            <div><div style="font-family:'Barlow Condensed',sans-serif;font-size:.95rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;">Carlos M.</div><div style="font-size:.75rem;color:#555;">Member since 2021</div></div>
-          </div>
-        </div>
-        <div class="testi-card" style="width:360px;background:#111;border:1px solid #1A1A1A;padding:2.2rem;flex-shrink:0;">
-          <div style="font-size:2.8rem;color:#E8000E;font-family:Georgia,serif;line-height:1;margin-bottom:.8rem;">"</div>
-          <div style="color:#E8000E;font-size:.8rem;letter-spacing:3px;margin-bottom:1rem;">★★★★★</div>
-          <p style="font-size:.88rem;font-weight:300;line-height:1.85;color:#CCC;margin-bottom:1.8rem;">Tried 5 gyms over the years. Nothing comes close. Equipment is pristine, atmosphere is intense in the best way.</p>
-          <div style="display:flex;align-items:center;gap:.9rem;">
-            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80" alt="" style="width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid #E8000E;flex-shrink:0;display:block;" />
-            <div><div style="font-family:'Barlow Condensed',sans-serif;font-size:.95rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;">Ryan P.</div><div style="font-size:.75rem;color:#555;">Member since 2020</div></div>
-          </div>
-        </div>
+
+    <div style="position:relative;">
+
+      <button id="testiPrev"
+        style="position:absolute;top:50%;left:-10px;transform:translateY(-50%);width:48px;height:48px;border:2px solid #333;background:#000;color:#fff;cursor:pointer;z-index:3;transition:.3s;"
+        onmouseover="this.style.background='#E8000E';this.style.borderColor='#E8000E'"
+        onmouseout="this.style.background='#000';this.style.borderColor='#333'">❮</button>
+
+      <button id="testiNext"
+        style="position:absolute;top:50%;right:-10px;transform:translateY(-50%);width:48px;height:48px;border:2px solid #333;background:#000;color:#fff;cursor:pointer;z-index:3;transition:.3s;"
+        onmouseover="this.style.background='#E8000E';this.style.borderColor='#E8000E'"
+        onmouseout="this.style.background='#000';this.style.borderColor='#333'">❯</button>
+
+      <div
+        style="position:absolute;left:0;top:0;width:120px;height:100%;background:linear-gradient(to right,#0A0A0A,transparent);z-index:2;pointer-events:none;">
       </div>
+
+      <div
+        style="position:absolute;right:0;top:0;width:120px;height:100%;background:linear-gradient(to left,#0A0A0A,transparent);z-index:2;pointer-events:none;">
+      </div>
+
+      <div style="overflow:hidden;">
+
+        <div id="testiTrack" style="display:flex;gap:1.8rem;width:max-content;will-change:transform;">
+
+          <!-- CARD -->
+          <div style="width:360px;background:#111;border:1px solid #1A1A1A;padding:2.2rem;flex-shrink:0;transition:.4s;"
+            onmouseover="this.style.transform='translateY(-8px)';this.style.borderColor='#E8000E'"
+            onmouseout="this.style.transform='translateY(0)';this.style.borderColor='#1A1A1A'">
+
+            <div style="font-size:2.8rem;color:#E8000E;margin-bottom:.8rem;">"</div>
+            <div style="color:#E8000E;font-size:.8rem;letter-spacing:3px;margin-bottom:1rem;">★★★★★</div>
+
+            <p style="font-size:.9rem;line-height:1.8;color:#ccc;margin-bottom:1.6rem;">IronForge completely transformed
+              my body and mindset. Lost 42 lbs in 6 months.</p>
+
+            <div style="display:flex;align-items:center;gap:.9rem;">
+              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80"
+                style="width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid #E8000E;">
+              <div>
+                <div
+                  style="font-family:'Barlow Condensed';font-weight:700;letter-spacing:.07em;text-transform:uppercase;">
+                  James D.</div>
+                <div style="font-size:.75rem;color:#555;">Member since 2022</div>
+              </div>
+            </div>
+
+          </div>
+
+          <div style="width:360px;background:#111;border:1px solid #1A1A1A;padding:2.2rem;flex-shrink:0;transition:.4s;"
+            onmouseover="this.style.transform='translateY(-8px)';this.style.borderColor='#E8000E'"
+            onmouseout="this.style.transform='translateY(0)';this.style.borderColor='#1A1A1A'">
+
+            <div style="font-size:2.8rem;color:#E8000E;margin-bottom:.8rem;">"</div>
+            <div style="color:#E8000E;font-size:.8rem;letter-spacing:3px;margin-bottom:1rem;">★★★★★</div>
+
+            <p style="font-size:.9rem;line-height:1.8;color:#ccc;margin-bottom:1.6rem;">The MMA program is world-class.
+              I competed in my first amateur fight after joining.</p>
+
+            <div style="display:flex;align-items:center;gap:.9rem;">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80"
+                style="width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid #E8000E;">
+              <div>
+                <div
+                  style="font-family:'Barlow Condensed';font-weight:700;letter-spacing:.07em;text-transform:uppercase;">
+                  Carlos M.</div>
+                <div style="font-size:.75rem;color:#555;">Member since 2021</div>
+              </div>
+            </div>
+
+          </div>
+
+          <div style="width:360px;background:#111;border:1px solid #1A1A1A;padding:2.2rem;flex-shrink:0;transition:.4s;"
+            onmouseover="this.style.transform='translateY(-8px)';this.style.borderColor='#E8000E'"
+            onmouseout="this.style.transform='translateY(0)';this.style.borderColor='#1A1A1A'">
+
+            <div style="font-size:2.8rem;color:#E8000E;margin-bottom:.8rem;">"</div>
+            <div style="color:#E8000E;font-size:.8rem;letter-spacing:3px;margin-bottom:1rem;">★★★★★</div>
+
+            <p style="font-size:.9rem;line-height:1.8;color:#ccc;margin-bottom:1.6rem;">24/7 access changed everything.
+              I train at 5AM before work.</p>
+
+            <div style="display:flex;align-items:center;gap:.9rem;">
+              <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80"
+                style="width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid #E8000E;">
+              <div>
+                <div
+                  style="font-family:'Barlow Condensed';font-weight:700;letter-spacing:.07em;text-transform:uppercase;">
+                  Sarah K.</div>
+                <div style="font-size:.75rem;color:#555;">Member since 2023</div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- DUPLICATES FOR INFINITE LOOP -->
+
+          <div style="width:360px;background:#111;border:1px solid #1A1A1A;padding:2.2rem;flex-shrink:0;">
+            <div style="font-size:2.8rem;color:#E8000E;margin-bottom:.8rem;">"</div>
+            <div style="color:#E8000E;font-size:.8rem;letter-spacing:3px;margin-bottom:1rem;">★★★★★</div>
+            <p style="font-size:.9rem;line-height:1.8;color:#ccc;margin-bottom:1.6rem;">IronForge completely transformed
+              my body and mindset.</p>
+          </div>
+
+        </div>
+
+      </div>
+
     </div>
+
   </section>
 
+  <script>
+    const testiTrack = document.getElementById("testiTrack")
+    const prev = document.getElementById("testiPrev")
+    const next = document.getElementById("testiNext")
+
+    let position = 0
+    let speed = 0.25
+    let isPaused = false
+
+    function animate() {
+
+      if (!isPaused) {
+        position -= speed
+      }
+
+      if (Math.abs(position) >= testiTrack.scrollWidth / 2) {
+        position = 0
+      }
+
+      testiTrack.style.transform = `translateX(${position}px)`
+
+      requestAnimationFrame(animate)
+    }
+
+    animate()
+
+    testiTrack.addEventListener("mouseenter", () => {
+      isPaused = true
+    })
+
+    testiTrack.addEventListener("mouseleave", () => {
+      isPaused = false
+    })
+
+    next.onclick = () => {
+      position -= 380
+    }
+
+    prev.onclick = () => {
+      position += 380
+    }
+
+    let startX = 0
+
+    testiTrack.addEventListener("touchstart", e => {
+      startX = e.touches[0].clientX
+    })
+
+    testiTrack.addEventListener("touchend", e => {
+      let endX = e.changedTouches[0].clientX
+
+      if (startX - endX > 50) { position -= 380 }
+      if (endX - startX > 50) { position += 380 }
+    })
+  </script>
   <!-- ═══════════════════════════════════════
      CONTACT
   ═══════════════════════════════════════ -->
@@ -1191,68 +2197,129 @@
       <div class="contact-grid" style="display:grid;grid-template-columns:1fr 1.2fr;gap:5rem;">
 
         <div>
-          <div class="reveal" style="font-family:'Barlow Condensed',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.35em;text-transform:uppercase;color:#E8000E;display:flex;align-items:center;gap:10px;margin-bottom:.9rem;">
+          <div class="reveal"
+            style="font-family:'Barlow Condensed',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.35em;text-transform:uppercase;color:#E8000E;display:flex;align-items:center;gap:10px;margin-bottom:.9rem;">
             <span style="width:28px;height:2px;background:#E8000E;display:inline-block;"></span>Get In Touch
           </div>
-          <h2 class="reveal rd1" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(2.2rem,4.5vw,4rem);line-height:.93;letter-spacing:.03em;text-transform:uppercase;margin-bottom:1.2rem;">
+          <h2 class="reveal rd1"
+            style="font-family:'Bebas Neue',sans-serif;font-size:clamp(2.2rem,4.5vw,4rem);line-height:.93;letter-spacing:.03em;text-transform:uppercase;margin-bottom:1.2rem;">
             LET'S START <span style="color:#E8000E;">YOUR JOURNEY</span>
           </h2>
-          <p class="reveal rd2" style="font-size:.9rem;font-weight:300;line-height:1.85;color:#666;margin-bottom:2.5rem;">Ready to transform your life? Drop us a message or walk in anytime.</p>
+          <p class="reveal rd2"
+            style="font-size:.9rem;font-weight:300;line-height:1.85;color:#666;margin-bottom:2.5rem;">Ready to transform
+            your life? Drop us a message or walk in anytime.</p>
 
           <div class="reveal rd2" style="display:flex;flex-direction:column;gap:1.6rem;margin-bottom:2.5rem;">
             <div style="display:flex;align-items:flex-start;gap:1rem;">
-              <div style="width:44px;height:44px;border:2px solid #E8000E;display:flex;align-items:center;justify-content:center;color:#E8000E;font-size:.95rem;flex-shrink:0;"><i class="fas fa-map-marker-alt"></i></div>
-              <div><div style="font-family:'Barlow Condensed',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#555;margin-bottom:3px;">Location</div><div style="font-size:.9rem;font-weight:500;color:#F5F5F5;">247 Iron District, Steel City, NY 10001</div></div>
+              <div
+                style="width:44px;height:44px;border:2px solid #E8000E;display:flex;align-items:center;justify-content:center;color:#E8000E;font-size:.95rem;flex-shrink:0;">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div>
+                <div
+                  style="font-family:'Barlow Condensed',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#555;margin-bottom:3px;">
+                  Location</div>
+                <div style="font-size:.9rem;font-weight:500;color:#F5F5F5;">247 Iron District, Steel City, NY 10001
+                </div>
+              </div>
             </div>
             <div style="display:flex;align-items:flex-start;gap:1rem;">
-              <div style="width:44px;height:44px;border:2px solid #E8000E;display:flex;align-items:center;justify-content:center;color:#E8000E;font-size:.95rem;flex-shrink:0;"><i class="fas fa-phone"></i></div>
-              <div><div style="font-family:'Barlow Condensed',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#555;margin-bottom:3px;">Phone</div><div style="font-size:.9rem;font-weight:500;color:#F5F5F5;">+1 (555) 123-4567</div></div>
+              <div
+                style="width:44px;height:44px;border:2px solid #E8000E;display:flex;align-items:center;justify-content:center;color:#E8000E;font-size:.95rem;flex-shrink:0;">
+                <i class="fas fa-phone"></i>
+              </div>
+              <div>
+                <div
+                  style="font-family:'Barlow Condensed',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#555;margin-bottom:3px;">
+                  Phone</div>
+                <div style="font-size:.9rem;font-weight:500;color:#F5F5F5;">+1 (555) 123-4567</div>
+              </div>
             </div>
             <div style="display:flex;align-items:flex-start;gap:1rem;">
-              <div style="width:44px;height:44px;border:2px solid #E8000E;display:flex;align-items:center;justify-content:center;color:#E8000E;font-size:.95rem;flex-shrink:0;"><i class="fas fa-envelope"></i></div>
-              <div><div style="font-family:'Barlow Condensed',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#555;margin-bottom:3px;">Email</div><div style="font-size:.9rem;font-weight:500;color:#F5F5F5;">hello@ironforgefit.com</div></div>
+              <div
+                style="width:44px;height:44px;border:2px solid #E8000E;display:flex;align-items:center;justify-content:center;color:#E8000E;font-size:.95rem;flex-shrink:0;">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div>
+                <div
+                  style="font-family:'Barlow Condensed',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#555;margin-bottom:3px;">
+                  Email</div>
+                <div style="font-size:.9rem;font-weight:500;color:#F5F5F5;">hello@ironforgefit.com</div>
+              </div>
             </div>
             <div style="display:flex;align-items:flex-start;gap:1rem;">
-              <div style="width:44px;height:44px;border:2px solid #E8000E;display:flex;align-items:center;justify-content:center;color:#E8000E;font-size:.95rem;flex-shrink:0;"><i class="fas fa-clock"></i></div>
-              <div><div style="font-family:'Barlow Condensed',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#555;margin-bottom:3px;">Hours</div><div style="font-size:.9rem;font-weight:500;color:#F5F5F5;">Mon–Fri 5AM–11PM · Sat–Sun 6AM–10PM</div></div>
+              <div
+                style="width:44px;height:44px;border:2px solid #E8000E;display:flex;align-items:center;justify-content:center;color:#E8000E;font-size:.95rem;flex-shrink:0;">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div>
+                <div
+                  style="font-family:'Barlow Condensed',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#555;margin-bottom:3px;">
+                  Hours</div>
+                <div style="font-size:.9rem;font-weight:500;color:#F5F5F5;">Mon–Fri 5AM–11PM · Sat–Sun 6AM–10PM</div>
+              </div>
             </div>
           </div>
 
           <div class="reveal rd3" style="display:flex;gap:.8rem;flex-wrap:wrap;">
-            <a href="#" class="contact-soc" style="width:42px;height:42px;border:1px solid #222;display:flex;align-items:center;justify-content:center;font-size:.95rem;color:#666;text-decoration:none;"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="contact-soc" style="width:42px;height:42px;border:1px solid #222;display:flex;align-items:center;justify-content:center;font-size:.95rem;color:#666;text-decoration:none;"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="contact-soc" style="width:42px;height:42px;border:1px solid #222;display:flex;align-items:center;justify-content:center;font-size:.95rem;color:#666;text-decoration:none;"><i class="fab fa-youtube"></i></a>
-            <a href="#" class="contact-soc" style="width:42px;height:42px;border:1px solid #222;display:flex;align-items:center;justify-content:center;font-size:.95rem;color:#666;text-decoration:none;"><i class="fab fa-tiktok"></i></a>
-            <a href="https://wa.me/1234567890" class="contact-soc" style="width:42px;height:42px;border:1px solid #222;display:flex;align-items:center;justify-content:center;font-size:.95rem;color:#666;text-decoration:none;"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" class="contact-soc"
+              style="width:42px;height:42px;border:1px solid #222;display:flex;align-items:center;justify-content:center;font-size:.95rem;color:#666;text-decoration:none;"><i
+                class="fab fa-instagram"></i></a>
+            <a href="#" class="contact-soc"
+              style="width:42px;height:42px;border:1px solid #222;display:flex;align-items:center;justify-content:center;font-size:.95rem;color:#666;text-decoration:none;"><i
+                class="fab fa-facebook-f"></i></a>
+            <a href="#" class="contact-soc"
+              style="width:42px;height:42px;border:1px solid #222;display:flex;align-items:center;justify-content:center;font-size:.95rem;color:#666;text-decoration:none;"><i
+                class="fab fa-youtube"></i></a>
+            <a href="#" class="contact-soc"
+              style="width:42px;height:42px;border:1px solid #222;display:flex;align-items:center;justify-content:center;font-size:.95rem;color:#666;text-decoration:none;"><i
+                class="fab fa-tiktok"></i></a>
+            <a href="https://wa.me/1234567890" class="contact-soc"
+              style="width:42px;height:42px;border:1px solid #222;display:flex;align-items:center;justify-content:center;font-size:.95rem;color:#666;text-decoration:none;"><i
+                class="fab fa-whatsapp"></i></a>
           </div>
         </div>
 
         <!-- Form -->
         <div class="reveal rd2" style="background:#1A1A1A;padding:2.8rem;border:1px solid #222;">
-          <div style="font-family:'Bebas Neue',sans-serif;font-size:1.9rem;letter-spacing:.04em;text-transform:uppercase;margin-bottom:1.8rem;">
+          <div
+            style="font-family:'Bebas Neue',sans-serif;font-size:1.9rem;letter-spacing:.04em;text-transform:uppercase;margin-bottom:1.8rem;">
             Send a <span style="color:#E8000E;">Message</span>
           </div>
           <div class="form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;margin-bottom:1.1rem;">
             <div style="display:flex;flex-direction:column;gap:5px;">
-              <label style="font-family:'Barlow Condensed',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#555;">First Name</label>
-              <input type="text" id="fname" placeholder="John" class="f-input" style="background:#222;border:1px solid transparent;border-bottom:1px solid #333;padding:12px 14px;font-family:'Barlow',sans-serif;font-size:.88rem;color:#F5F5F5;width:100%;" />
+              <label
+                style="font-family:'Barlow Condensed',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#555;">First
+                Name</label>
+              <input type="text" id="fname" placeholder="John" class="f-input"
+                style="background:#222;border:1px solid transparent;border-bottom:1px solid #333;padding:12px 14px;font-family:'Barlow',sans-serif;font-size:.88rem;color:#F5F5F5;width:100%;" />
             </div>
             <div style="display:flex;flex-direction:column;gap:5px;">
-              <label style="font-family:'Barlow Condensed',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#555;">Last Name</label>
-              <input type="text" id="lname" placeholder="Doe" class="f-input" style="background:#222;border:1px solid transparent;border-bottom:1px solid #333;padding:12px 14px;font-family:'Barlow',sans-serif;font-size:.88rem;color:#F5F5F5;width:100%;" />
+              <label
+                style="font-family:'Barlow Condensed',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#555;">Last
+                Name</label>
+              <input type="text" id="lname" placeholder="Doe" class="f-input"
+                style="background:#222;border:1px solid transparent;border-bottom:1px solid #333;padding:12px 14px;font-family:'Barlow',sans-serif;font-size:.88rem;color:#F5F5F5;width:100%;" />
             </div>
           </div>
           <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:1.1rem;">
-            <label style="font-family:'Barlow Condensed',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#555;">Email</label>
-            <input type="email" id="email" placeholder="john@email.com" class="f-input" style="background:#222;border:1px solid transparent;border-bottom:1px solid #333;padding:12px 14px;font-family:'Barlow',sans-serif;font-size:.88rem;color:#F5F5F5;width:100%;" />
+            <label
+              style="font-family:'Barlow Condensed',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#555;">Email</label>
+            <input type="email" id="email" placeholder="john@email.com" class="f-input"
+              style="background:#222;border:1px solid transparent;border-bottom:1px solid #333;padding:12px 14px;font-family:'Barlow',sans-serif;font-size:.88rem;color:#F5F5F5;width:100%;" />
           </div>
           <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:1.1rem;">
-            <label style="font-family:'Barlow Condensed',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#555;">Phone</label>
-            <input type="tel" id="phone" placeholder="+1 (555) 000-0000" class="f-input" style="background:#222;border:1px solid transparent;border-bottom:1px solid #333;padding:12px 14px;font-family:'Barlow',sans-serif;font-size:.88rem;color:#F5F5F5;width:100%;" />
+            <label
+              style="font-family:'Barlow Condensed',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#555;">Phone</label>
+            <input type="tel" id="phone" placeholder="+1 (555) 000-0000" class="f-input"
+              style="background:#222;border:1px solid transparent;border-bottom:1px solid #333;padding:12px 14px;font-family:'Barlow',sans-serif;font-size:.88rem;color:#F5F5F5;width:100%;" />
           </div>
           <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:1.1rem;">
-            <label style="font-family:'Barlow Condensed',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#555;">Program Interest</label>
-            <select id="program" class="f-input" style="background:#222;border:1px solid transparent;border-bottom:1px solid #333;padding:12px 14px;font-family:'Barlow',sans-serif;font-size:.88rem;color:#F5F5F5;width:100%;">
+            <label
+              style="font-family:'Barlow Condensed',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#555;">Program
+              Interest</label>
+            <select id="program" class="f-input"
+              style="background:#222;border:1px solid transparent;border-bottom:1px solid #333;padding:12px 14px;font-family:'Barlow',sans-serif;font-size:.88rem;color:#F5F5F5;width:100%;">
               <option value="">Select a program…</option>
               <option>Strength &amp; Power</option>
               <option>HIIT Burn</option>
@@ -1263,8 +2330,10 @@
             </select>
           </div>
           <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:1.1rem;">
-            <label style="font-family:'Barlow Condensed',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#555;">Message</label>
-            <textarea id="msg" rows="4" placeholder="Tell us your goals…" class="f-input" style="background:#222;border:1px solid transparent;border-bottom:1px solid #333;padding:12px 14px;font-family:'Barlow',sans-serif;font-size:.88rem;color:#F5F5F5;width:100%;resize:none;"></textarea>
+            <label
+              style="font-family:'Barlow Condensed',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#555;">Message</label>
+            <textarea id="msg" rows="4" placeholder="Tell us your goals…" class="f-input"
+              style="background:#222;border:1px solid transparent;border-bottom:1px solid #333;padding:12px 14px;font-family:'Barlow',sans-serif;font-size:.88rem;color:#F5F5F5;width:100%;resize:none;"></textarea>
           </div>
           <button class="f-submit" id="fSubmit"
             style="width:100%;font-family:'Barlow Condensed',sans-serif;font-size:.95rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;padding:16px;background:#E8000E;color:#fff;border:none;cursor:pointer;clip-path:polygon(6px 0%,100% 0%,calc(100% - 6px) 100%,0% 100%);">
@@ -1277,63 +2346,64 @@
   </section>
 
   <script>
-    /* ── CONTACT FORM ── */
-    (function () {
-      const btn = document.getElementById('fSubmit');
-      if (!btn) return;
+      /* ── CONTACT FORM ── */
+      (function () {
+        const btn = document.getElementById('fSubmit');
+        if (!btn) return;
 
-      function isEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
-      function getVal(id) { const el = document.getElementById(id); return el ? el.value.trim() : ''; }
+        function isEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+        function getVal(id) { const el = document.getElementById(id); return el ? el.value.trim() : ''; }
 
-      function showErr(msg) {
-        const old = document.querySelector('.form-err');
-        if (old) old.remove();
-        const d = document.createElement('div');
-        d.className = 'form-err';
-        d.textContent = msg;
-        d.style.cssText = 'background:rgba(232,0,14,.1);border:1px solid #E8000E;color:#ff5555;padding:10px 14px;font-size:.85rem;margin-bottom:1rem;font-family:Barlow,sans-serif;';
-        btn.parentElement.insertBefore(d, btn);
-        setTimeout(() => d.remove(), 3500);
-      }
+        function showErr(msg) {
+          const old = document.querySelector('.form-err');
+          if (old) old.remove();
+          const d = document.createElement('div');
+          d.className = 'form-err';
+          d.textContent = msg;
+          d.style.cssText = 'background:rgba(232,0,14,.1);border:1px solid #E8000E;color:#ff5555;padding:10px 14px;font-size:.85rem;margin-bottom:1rem;font-family:Barlow,sans-serif;';
+          btn.parentElement.insertBefore(d, btn);
+          setTimeout(() => d.remove(), 3500);
+        }
 
-      function clearForm() {
-        ['fname','lname','email','phone','msg'].forEach(id => { const el = document.getElementById(id); if (el) el.value = ''; });
-        const p = document.getElementById('program'); if (p) p.selectedIndex = 0;
-      }
+        function clearForm() {
+          ['fname', 'lname', 'email', 'phone', 'msg'].forEach(id => { const el = document.getElementById(id); if (el) el.value = ''; });
+          const p = document.getElementById('program'); if (p) p.selectedIndex = 0;
+        }
 
-      btn.addEventListener('click', () => {
-        const fname = getVal('fname'), lname = getVal('lname');
-        const email = getVal('email'), phone = getVal('phone');
-        const program = getVal('program'), msg = getVal('msg');
+        btn.addEventListener('click', () => {
+          const fname = getVal('fname'), lname = getVal('lname');
+          const email = getVal('email'), phone = getVal('phone');
+          const program = getVal('program'), msg = getVal('msg');
 
-        if (!fname || !lname) { showErr('Please enter your full name.'); return; }
-        if (!email || !isEmail(email)) { showErr('Please enter a valid email address.'); return; }
+          if (!fname || !lname) { showErr('Please enter your full name.'); return; }
+          if (!email || !isEmail(email)) { showErr('Please enter a valid email address.'); return; }
 
-        const cfg = window.GYM_CONFIG;
-        const waMsg =
-          `📩 *New Enquiry — ${cfg.gymName}*\n\n` +
-          `*Name:* ${fname} ${lname}\n` +
-          `*Email:* ${email}\n` +
-          `*Phone:* ${phone || 'Not provided'}\n` +
-          `*Program:* ${program || 'Not specified'}\n\n` +
-          `*Message:*\n${msg || 'No message'}`;
+          const cfg = window.GYM_CONFIG;
+          const waMsg =
+            `📩 *New Enquiry — ${cfg.gymName}*\n\n` +
+            `*Name:* ${fname} ${lname}\n` +
+            `*Email:* ${email}\n` +
+            `*Phone:* ${phone || 'Not provided'}\n` +
+            `*Program:* ${program || 'Not specified'}\n\n` +
+            `*Message:*\n${msg || 'No message'}`;
 
-        window.open(`https://wa.me/${cfg.phoneNumber}?text=${encodeURIComponent(waMsg)}`, '_blank');
+          window.open(`https://wa.me/${cfg.phoneNumber}?text=${encodeURIComponent(waMsg)}`, '_blank');
 
-        btn.classList.add('ok');
-        btn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
-        setTimeout(() => {
-          btn.classList.remove('ok');
-          btn.innerHTML = '<i class="fas fa-paper-plane"></i>&nbsp; Send Message';
-          clearForm();
-        }, 4000);
-      });
-    })();
+          btn.classList.add('ok');
+          btn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+          setTimeout(() => {
+            btn.classList.remove('ok');
+            btn.innerHTML = '<i class="fas fa-paper-plane"></i>&nbsp; Send Message';
+            clearForm();
+          }, 4000);
+        });
+      })();
   </script>
 
   <!-- Map -->
   <div style="height:360px;overflow:hidden;position:relative;z-index:2;">
-    <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=-74.0059%2C40.7127%2C-73.9859%2C40.7227&layer=mapnik"
+    <iframe
+      src="https://www.openstreetmap.org/export/embed.html?bbox=-74.0059%2C40.7127%2C-73.9859%2C40.7227&layer=mapnik"
       style="width:100%;height:100%;border:none;filter:grayscale(1) invert(1) contrast(1.1) brightness(.5);opacity:.65;"
       allowfullscreen loading="lazy" title="Location"></iframe>
   </div>
@@ -1342,57 +2412,97 @@
      FOOTER
   ═══════════════════════════════════════ -->
   <footer style="background:#0A0A0A;border-top:1px solid #1A1A1A;padding:5rem 5% 2rem;position:relative;z-index:2;">
-    <div style="position:absolute;top:0;left:5%;width:90%;height:3px;background:linear-gradient(to right,transparent,#E8000E,transparent);"></div>
+    <div
+      style="position:absolute;top:0;left:5%;width:90%;height:3px;background:linear-gradient(to right,transparent,#E8000E,transparent);">
+    </div>
 
-    <div class="footer-grid" style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3.5rem;max-width:1200px;margin:0 auto 3.5rem;">
+    <div class="footer-grid"
+      style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3.5rem;max-width:1200px;margin:0 auto 3.5rem;">
 
       <div>
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:2.2rem;letter-spacing:.06em;margin-bottom:1rem;line-height:1;display:flex;align-items:center;gap:8px;">
-          <span style="display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;background:#E8000E;border-radius:3px;font-size:1rem;">I</span>
+        <div
+          style="font-family:'Bebas Neue',sans-serif;font-size:2.2rem;letter-spacing:.06em;margin-bottom:1rem;line-height:1;display:flex;align-items:center;gap:8px;">
+          <span
+            style="display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;background:#E8000E;border-radius:3px;font-size:1rem;">I</span>
           IRON<span style="color:#E8000E;">FORGE</span>
         </div>
-        <p style="font-size:.85rem;font-weight:300;line-height:1.9;color:#555;margin-bottom:1.4rem;">We build more than bodies — we forge champions, fuel ambition, and create a community of relentless individuals committed to becoming their best selves.</p>
+        <p style="font-size:.85rem;font-weight:300;line-height:1.9;color:#555;margin-bottom:1.4rem;">We build more than
+          bodies — we forge champions, fuel ambition, and create a community of relentless individuals committed to
+          becoming their best selves.</p>
         <div style="display:flex;gap:.7rem;flex-wrap:wrap;">
-          <a href="#" class="footer-soc" style="width:36px;height:36px;border:1px solid #1A1A1A;display:flex;align-items:center;justify-content:center;font-size:.85rem;color:#555;text-decoration:none;"><i class="fab fa-instagram"></i></a>
-          <a href="#" class="footer-soc" style="width:36px;height:36px;border:1px solid #1A1A1A;display:flex;align-items:center;justify-content:center;font-size:.85rem;color:#555;text-decoration:none;"><i class="fab fa-facebook-f"></i></a>
-          <a href="#" class="footer-soc" style="width:36px;height:36px;border:1px solid #1A1A1A;display:flex;align-items:center;justify-content:center;font-size:.85rem;color:#555;text-decoration:none;"><i class="fab fa-youtube"></i></a>
-          <a href="#" class="footer-soc" style="width:36px;height:36px;border:1px solid #1A1A1A;display:flex;align-items:center;justify-content:center;font-size:.85rem;color:#555;text-decoration:none;"><i class="fab fa-tiktok"></i></a>
-          <a href="https://wa.me/1234567890" class="footer-soc" style="width:36px;height:36px;border:1px solid #1A1A1A;display:flex;align-items:center;justify-content:center;font-size:.85rem;color:#555;text-decoration:none;"><i class="fab fa-whatsapp"></i></a>
+          <a href="#" class="footer-soc"
+            style="width:36px;height:36px;border:1px solid #1A1A1A;display:flex;align-items:center;justify-content:center;font-size:.85rem;color:#555;text-decoration:none;"><i
+              class="fab fa-instagram"></i></a>
+          <a href="#" class="footer-soc"
+            style="width:36px;height:36px;border:1px solid #1A1A1A;display:flex;align-items:center;justify-content:center;font-size:.85rem;color:#555;text-decoration:none;"><i
+              class="fab fa-facebook-f"></i></a>
+          <a href="#" class="footer-soc"
+            style="width:36px;height:36px;border:1px solid #1A1A1A;display:flex;align-items:center;justify-content:center;font-size:.85rem;color:#555;text-decoration:none;"><i
+              class="fab fa-youtube"></i></a>
+          <a href="#" class="footer-soc"
+            style="width:36px;height:36px;border:1px solid #1A1A1A;display:flex;align-items:center;justify-content:center;font-size:.85rem;color:#555;text-decoration:none;"><i
+              class="fab fa-tiktok"></i></a>
+          <a href="https://wa.me/1234567890" class="footer-soc"
+            style="width:36px;height:36px;border:1px solid #1A1A1A;display:flex;align-items:center;justify-content:center;font-size:.85rem;color:#555;text-decoration:none;"><i
+              class="fab fa-whatsapp"></i></a>
         </div>
       </div>
 
       <div>
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:1.3rem;padding-bottom:.7rem;border-bottom:2px solid #E8000E;display:inline-block;">Navigate</div>
+        <div
+          style="font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:1.3rem;padding-bottom:.7rem;border-bottom:2px solid #E8000E;display:inline-block;">
+          Navigate</div>
         <div style="display:flex;flex-direction:column;gap:.7rem;margin-top:.4rem;">
-          <a href="#home"       class="footer-lnk" style="font-size:.84rem;font-weight:300;color:#555;text-decoration:none;">Home</a>
-          <a href="#about"      class="footer-lnk" style="font-size:.84rem;font-weight:300;color:#555;text-decoration:none;">About Us</a>
-          <a href="#services"   class="footer-lnk" style="font-size:.84rem;font-weight:300;color:#555;text-decoration:none;">Programs</a>
-          <a href="#trainers"   class="footer-lnk" style="font-size:.84rem;font-weight:300;color:#555;text-decoration:none;">Coaches</a>
-          <a href="#membership" class="footer-lnk" style="font-size:.84rem;font-weight:300;color:#555;text-decoration:none;">Membership</a>
-          <a href="#contact"    class="footer-lnk" style="font-size:.84rem;font-weight:300;color:#555;text-decoration:none;">Contact</a>
+          <a href="#home" class="footer-lnk"
+            style="font-size:.84rem;font-weight:300;color:#555;text-decoration:none;">Home</a>
+          <a href="#about" class="footer-lnk"
+            style="font-size:.84rem;font-weight:300;color:#555;text-decoration:none;">About Us</a>
+          <a href="#services" class="footer-lnk"
+            style="font-size:.84rem;font-weight:300;color:#555;text-decoration:none;">Programs</a>
+          <a href="#trainers" class="footer-lnk"
+            style="font-size:.84rem;font-weight:300;color:#555;text-decoration:none;">Coaches</a>
+          <a href="#membership" class="footer-lnk"
+            style="font-size:.84rem;font-weight:300;color:#555;text-decoration:none;">Membership</a>
+          <a href="#contact" class="footer-lnk"
+            style="font-size:.84rem;font-weight:300;color:#555;text-decoration:none;">Contact</a>
         </div>
       </div>
 
       <div>
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:1.3rem;padding-bottom:.7rem;border-bottom:2px solid #E8000E;display:inline-block;">Programs</div>
+        <div
+          style="font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:1.3rem;padding-bottom:.7rem;border-bottom:2px solid #E8000E;display:inline-block;">
+          Programs</div>
         <div style="display:flex;flex-direction:column;gap:.7rem;margin-top:.4rem;">
-          <a href="#services" class="footer-lnk" style="font-size:.84rem;font-weight:300;color:#555;text-decoration:none;">Strength &amp; Power</a>
-          <a href="#services" class="footer-lnk" style="font-size:.84rem;font-weight:300;color:#555;text-decoration:none;">HIIT Burn</a>
-          <a href="#services" class="footer-lnk" style="font-size:.84rem;font-weight:300;color:#555;text-decoration:none;">MMA &amp; Boxing</a>
-          <a href="#services" class="footer-lnk" style="font-size:.84rem;font-weight:300;color:#555;text-decoration:none;">Yoga &amp; Flex</a>
-          <a href="#services" class="footer-lnk" style="font-size:.84rem;font-weight:300;color:#555;text-decoration:none;">Cardio Zone</a>
-          <a href="#services" class="footer-lnk" style="font-size:.84rem;font-weight:300;color:#555;text-decoration:none;">Personal Training</a>
+          <a href="#services" class="footer-lnk"
+            style="font-size:.84rem;font-weight:300;color:#555;text-decoration:none;">Strength &amp; Power</a>
+          <a href="#services" class="footer-lnk"
+            style="font-size:.84rem;font-weight:300;color:#555;text-decoration:none;">HIIT Burn</a>
+          <a href="#services" class="footer-lnk"
+            style="font-size:.84rem;font-weight:300;color:#555;text-decoration:none;">MMA &amp; Boxing</a>
+          <a href="#services" class="footer-lnk"
+            style="font-size:.84rem;font-weight:300;color:#555;text-decoration:none;">Yoga &amp; Flex</a>
+          <a href="#services" class="footer-lnk"
+            style="font-size:.84rem;font-weight:300;color:#555;text-decoration:none;">Cardio Zone</a>
+          <a href="#services" class="footer-lnk"
+            style="font-size:.84rem;font-weight:300;color:#555;text-decoration:none;">Personal Training</a>
         </div>
       </div>
 
       <div>
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:1.3rem;padding-bottom:.7rem;border-bottom:2px solid #E8000E;display:inline-block;">Hours</div>
+        <div
+          style="font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:1.3rem;padding-bottom:.7rem;border-bottom:2px solid #E8000E;display:inline-block;">
+          Hours</div>
         <div style="display:flex;flex-direction:column;gap:.6rem;margin-top:.4rem;">
-          <div style="display:flex;justify-content:space-between;font-size:.82rem;color:#555;"><span style="color:#CCC;font-weight:500;">Mon–Fri</span><span>5AM – 11PM</span></div>
-          <div style="display:flex;justify-content:space-between;font-size:.82rem;color:#555;"><span style="color:#CCC;font-weight:500;">Saturday</span><span>6AM – 10PM</span></div>
-          <div style="display:flex;justify-content:space-between;font-size:.82rem;color:#555;"><span style="color:#CCC;font-weight:500;">Sunday</span><span>6AM – 10PM</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:.82rem;color:#555;"><span
+              style="color:#CCC;font-weight:500;">Mon–Fri</span><span>5AM – 11PM</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:.82rem;color:#555;"><span
+              style="color:#CCC;font-weight:500;">Saturday</span><span>6AM – 10PM</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:.82rem;color:#555;"><span
+              style="color:#CCC;font-weight:500;">Sunday</span><span>6AM – 10PM</span></div>
           <div style="margin-top:.5rem;padding:.6rem;background:rgba(232,0,14,.08);border-left:2px solid #E8000E;">
-            <div style="font-family:'Barlow Condensed',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#E8000E;">Legend Members</div>
+            <div
+              style="font-family:'Barlow Condensed',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#E8000E;">
+              Legend Members</div>
             <div style="font-size:.78rem;color:#888;margin-top:2px;">24 / 7 Access</div>
           </div>
         </div>
@@ -1400,8 +2510,10 @@
 
     </div>
 
-    <div style="display:flex;align-items:center;justify-content:space-between;padding-top:2rem;border-top:1px solid #1A1A1A;flex-wrap:wrap;gap:1rem;max-width:1200px;margin:0 auto;">
-      <p style="font-size:.78rem;color:#444;">&copy; <span id="footerYear">2025</span> <span style="color:#E8000E;">IronForge Gym</span>. All rights reserved.</p>
+    <div
+      style="display:flex;align-items:center;justify-content:space-between;padding-top:2rem;border-top:1px solid #1A1A1A;flex-wrap:wrap;gap:1rem;max-width:1200px;margin:0 auto;">
+      <p style="font-size:.78rem;color:#444;">&copy; <span id="footerYear">2025</span> <span
+          style="color:#E8000E;">IronForge Gym</span>. All rights reserved.</p>
       <div style="display:flex;gap:1.8rem;flex-wrap:wrap;">
         <a href="#" class="footer-lnk" style="font-size:.78rem;color:#444;text-decoration:none;">Privacy Policy</a>
         <a href="#" class="footer-lnk" style="font-size:.78rem;color:#444;text-decoration:none;">Terms of Service</a>
@@ -1499,4 +2611,5 @@
   </script>
 
 </body>
+
 </html>
